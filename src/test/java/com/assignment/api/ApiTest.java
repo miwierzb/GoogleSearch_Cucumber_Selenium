@@ -1,6 +1,9 @@
 package com.assignment.api;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,6 +25,11 @@ public class ApiTest {
     private static final int FILTER_POST_ID = Integer.parseInt(getProperty("api.filter.postId"));
     private static final String FILTER_TEXT = getProperty("api.filter.text");
 
+    @BeforeClass
+    public static void setUp(){
+        LogManager.getRootLogger().setLevel(Level.INFO);
+    }
+
     @Test
     public void getCommentsVerifyStatusCodeNumberOfCommentsAndChosenEmailPresence()
     {
@@ -33,9 +41,9 @@ public class ApiTest {
         then().
                 log().all().
                 statusCode(SC_OK).
-         and().
+        and().
                 body("", hasSize(greaterThan(ZERO_SIZE))).
-         and().
+        and().
                 body("email", hasItem(EMAIL));
     }
 
