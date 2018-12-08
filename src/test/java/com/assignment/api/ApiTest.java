@@ -8,17 +8,19 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.assignment.core.PropertiesManager.getProperty;
 import static com.jayway.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.*;
 
 public class ApiTest {
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
-    private static final String ENDPOINT = "/comments";
-    private static final String EMAIL = "Jayne_Kuhic@sydney.com";
-    private static final int ZERO_SIZE = 0;
-    private static final int FILTER_POST_ID = 1;
-    private static final String FILTER_TEXT = "non";
+
+    private static final String BASE_URL = getProperty("api.base.url");
+    private static final String ENDPOINT = getProperty("api.endpoint");
+    private static final String EMAIL = getProperty("api.email");
+    private static final int ZERO_SIZE = Integer.parseInt(getProperty("api.zero.size"));
+    private static final int FILTER_POST_ID = Integer.parseInt(getProperty("api.filter.postId"));
+    private static final String FILTER_TEXT = getProperty("api.filter.text");
 
     @Test
     public void getCommentsVerifyStatusCodeNumberOfCommentsAndChosenEmailPresence()
@@ -31,9 +33,9 @@ public class ApiTest {
         then().
                 log().all().
                 statusCode(SC_OK).
-        and().
+         and().
                 body("", hasSize(greaterThan(ZERO_SIZE))).
-        and().
+         and().
                 body("email", hasItem(EMAIL));
     }
 
