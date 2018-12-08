@@ -9,7 +9,7 @@ import static com.assignment.core.CustomLogger.logger;
 
 public class PropertiesManager {
 
-    private final static String FILE_URL = "/testExamples/src/test/resources/test.data.properties";
+    private final static String FILE_URL = "/testExample/src/test/resources/test.data.properties";
 
     public static String getProperty(final String property) {
         Properties prop = new Properties();

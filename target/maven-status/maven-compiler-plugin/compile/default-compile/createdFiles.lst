@@ -1,0 +1,5 @@
+com\assignment\core\PropertiesManager.class
+com\assignment\core\CustomLogger.class
+com\assignment\core\ScreenShotOnFailure$1.class
+com\assignment\core\ScreenShotOnFailure.class
+com\assignment\core\WebDriverInitializer.class
