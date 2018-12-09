@@ -1,4 +1,4 @@
-# testExample project
+# testAutomationExamples project
 
 ## Description
 
@@ -49,21 +49,21 @@ mvn clean install -DskipTests
 
 ***1. PROJECT STRUCTURE***
 
-- All core framework classes can be found under /testExample/src/main/java/com/assignment/core
-- All POM Pages classes can be found under /testExample/src/main/java/com/assignment/selenium
-- All API POJO classes can be found under /testExample/src/main/java/com/assignment/api
+- All core framework classes can be found under ./src/main/java/com/assignment/core
+- All POM Pages classes can be found under ./src/main/java/com/assignment/selenium
+- All API POJO classes can be found under ./src/main/java/com/assignment/api
 
 *Test classes:*
-- All API Test classes can be found under /testExample/src/test/java/com/assignment/api
-- All Selenium Test classes can be found under /testExample/src/test/java/com/assignment/selenium
+- All API Test classes can be found under ./src/test/java/com/assignment/api
+- All Selenium Test classes can be found under ./src/test/java/com/assignment/selenium
 
 ***2. TEST DATA***
 
-All test data can be found in /testExample/src/test/resources/test.data.properties file.
+All test data can be found in ./src/test/resources/test.data.properties file.
 
 ***3. CUSTOM LOGGER***
 
-Custom logger is set to DEBUG mode as default, configuration can be found in /testExample/src/main/resources/log4j.properties. 
+Custom logger is set to DEBUG mode as default, configuration can be found in ./src/main/resources/log4j.properties. 
 
 DEBUG mode contains all INFO loggs (steps and step related informations) and DEBUG logs specified in 'WebEventListener' class (e.g. beforeNavigateTo, afterNavigateTo, beforeFindBy, afterFindBy etc.). To turn off DEBUG mode and see only INFO logs please change line in log4j.properties from:
 ```bash
@@ -108,7 +108,7 @@ mvn test -Dtest=testClassName
 ```bash
 mvn test -Dtest=testClassName#testMethodName
 ```
-In case of test failure, screenshot can be found in /testExample main folder
+In case of test failure, screenshot can be found in project main folder
 
 ## Authors and acknowledgment
 Created by Michal Wierzbicki 12.2018
