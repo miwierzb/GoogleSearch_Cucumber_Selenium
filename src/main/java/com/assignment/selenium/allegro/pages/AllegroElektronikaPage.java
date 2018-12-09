@@ -1,6 +1,6 @@
-package com.assignment.selenium.pages.allegro;
+package com.assignment.selenium.allegro.pages;
 
-import com.assignment.selenium.pages.BasePage;
+import com.assignment.selenium.BasePage;
 import org.openqa.selenium.By;
 
 import static com.assignment.core.CustomLogger.logger;

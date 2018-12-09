@@ -1,4 +1,4 @@
-package com.assignment.selenium.pages;
+package com.assignment.selenium;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -55,13 +55,23 @@ public abstract class BasePage implements IBasePage {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    protected void waitForTextToDisappear(By locator, String text) {
+        logger().debug("Waiting for " + text + " element to disappear");
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(locator, text)));
+    }
+
+    protected void waitForTextToAppear(By locator, String text) {
+        logger().debug("Waiting for " + text + " element to appear");
+        wait.until(ExpectedConditions.textToBe(locator, text));
+    }
+
     protected void waitForPageToLoad() {
         logger().debug("Waiting for page to load");
         ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
-                    }
-                };
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+            }
+        };
         WebDriverWait wait = new WebDriverWait(getDriver(), 30);
         wait.until(pageLoadCondition);
     }

@@ -1,4 +1,4 @@
-package com.assignment.selenium.pages;
+package com.assignment.selenium;
 
 public interface IBasePage {
 
