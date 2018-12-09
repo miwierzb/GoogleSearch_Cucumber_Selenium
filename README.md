@@ -97,6 +97,7 @@ Right click on test methof you want to run and click "Run 'testMethodName()'" or
 ```bash
 mvn test
 ```
+NOTE: When running all tests, DEBUG logs are not displayed
 - to run chosen test class:
 
 ```bash
