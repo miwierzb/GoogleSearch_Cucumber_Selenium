@@ -10,7 +10,7 @@
 
     <properties>
         <java.compiler.version>1.8</java.compiler.version>
-        <selenium.version>3.4.0</selenium.version>
+        <selenium.version>3.141.59</selenium.version>
     </properties>
 
     <dependencies>
@@ -18,6 +18,11 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
         </dependency>
         <dependency>
             <groupId>com.jayway.restassured</groupId>
