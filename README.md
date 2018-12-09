@@ -4,7 +4,7 @@
 
 testExample project contains a simple Selenium Test Automation Framework with sample Selenium test + API sample test (rest assured).
 
-/important note - all features were tested on Windows 32bit and Chrome browser
+ Note - all features were tested on Windows 32bit and Chrome browser
 
 **Selenium Test Automation Framework includes:**
 - 'PropertiesManager' - test data imported from test.data.properties file
