@@ -29,7 +29,7 @@ public class ScreenShotOnFailure implements MethodRule {
             public void captureScreenShot(String fileName) throws IOException {
                 File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
                 fileName += "_failureScreenshot";
-                File targetFile = new File("/testExample/" + fileName + ".png");
+                File targetFile = new File("./" + fileName + ".png");
                 FileUtils.copyFile(scrFile, targetFile);
             }
         };

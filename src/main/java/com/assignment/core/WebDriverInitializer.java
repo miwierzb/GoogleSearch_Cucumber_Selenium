@@ -16,7 +16,7 @@ public class WebDriverInitializer {
     private static WebEventListener webEventListener;
 
     public static void setUpDriver() {
-        System.setProperty("webdriver." + WEB_DRIVER + ".driver","/testExample/webDrivers/" + WEB_DRIVER + "driver.exe");
+        System.setProperty("webdriver." + WEB_DRIVER + ".driver","./webDrivers/" + WEB_DRIVER + "driver.exe");
         logger().debug("Creating new " + WEB_DRIVER + " instance");
         switch(WEB_DRIVER) {
             case "chrome":
