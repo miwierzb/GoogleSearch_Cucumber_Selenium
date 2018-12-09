@@ -1,0 +1,17 @@
+com\assignment\selenium\allegro\pages\AllegroElektronikaPage.class
+com\assignment\core\ScreenShotOnFailure.class
+com\assignment\core\WebDriverInitializer.class
+com\assignment\selenium\allegro\pages\AllegroDyskiZewnetrzneIPrzenosnePage.class
+com\assignment\selenium\allegro\modules\AllegroSearchFilters.class
+com\assignment\selenium\BasePage.class
+com\assignment\selenium\allegro\modules\AllegroSearchResults.class
+com\assignment\selenium\allegro\pages\AllegroHomePage.class
+com\assignment\core\WebEventListener.class
+com\assignment\selenium\IBasePage.class
+com\assignment\core\ScreenShotOnFailure$1.class
+com\assignment\api\Comments.class
+com\assignment\core\PropertiesManager.class
+com\assignment\selenium\BasePage$1.class
+com\assignment\core\CustomLogger.class
+com\assignment\selenium\allegro\pages\AllegroKomputeryPage.class
+com\assignment\selenium\allegro\pages\AllegroDyskiIPamieciPrzenosnePage.class
