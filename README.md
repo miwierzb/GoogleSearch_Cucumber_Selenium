@@ -39,6 +39,8 @@ File -> New -> Project from existing sources -> go do repository folder, click o
 
 Wait for IDE to import all necessary project files.
 
+You may need to select project SDK under File -> Project Structure -> Project Settings -> Project -> Project SDK (1.8)
+
 Run cmd and navigate to your maven project directory (or open terminal in IntelliJ and navigate to directory). Make sure to clean and compile project by typing in:
 
 ```bash
