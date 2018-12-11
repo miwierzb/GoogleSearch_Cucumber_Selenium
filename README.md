@@ -9,7 +9,7 @@ testExample project contains a simple Selenium Test Automation Framework with sa
 **Selenium Test Automation Framework includes:**
 - 'PropertiesManager' - test data imported from test.data.properties file
 - 'CustomLogger' - Custom Logger to stdout and file including 'WebEventListener' event custom logs based on log4j (configuration file - log4j.properties, logging to logging.log file in main project directory)
-- 'ScreenShotOnFailure' - taking screeshot on failure and saving it to .png file in main project directory
+- 'ScreenShotOnFailure' - taking screeshot on failure and saving it to .png file in screenShots/ directory
 - Ability to choose browser from test.data.properties file ('WebDriverInitializer' class) (package includes webdrivers for chrome and mozilla firefox)
 - Supporting POM model
 
