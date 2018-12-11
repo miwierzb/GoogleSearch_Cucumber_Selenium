@@ -9,6 +9,8 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static com.assignment.core.WebDriverInitializer.getDriver;
 
@@ -27,8 +29,9 @@ public class ScreenShotOnFailure implements MethodRule {
             }
 
             public void captureScreenShot(String fileName) throws IOException {
+                DateTimeFormatter timeStampPattern = DateTimeFormatter.ofPattern("yyyy-MM-dd, HH-mm-ss");
                 File scrFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
-                fileName += "_failureScreenshot";
+                fileName = timeStampPattern.format(LocalDateTime.now()) + "_" + fileName + "_failureScreenshot";
                 File targetFile = new File("screenShots/" + fileName + ".png");
                 FileUtils.copyFile(scrFile, targetFile);
             }
