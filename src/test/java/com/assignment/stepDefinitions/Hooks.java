@@ -1,10 +1,10 @@
 package com.assignment.stepDefinitions;
 
-import com.assignment.core.ScreenShotOnFailure;
-import com.assignment.selenium.allegro.pages.AllegroHomePage;
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.junit.Rule;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import static com.assignment.core.CustomLogger.logger;
 import static com.assignment.core.WebDriverInitializer.getDriver;
@@ -13,14 +13,14 @@ import static com.assignment.core.WebDriverInitializer.setUpDriver;
 public class Hooks {
 
     @Before
-    public static void beforeClass() {
+    public void beforeClass() {
         setUpDriver();
         logger().debug("BEFORE STEP: Maximizing browser window");
         getDriver().manage().window().maximize();
     }
 
-    @After
-    public static void afterClass() {
+    @After(order = 20000)
+    public void afterClass() {
         if (null != getDriver()) {
             logger().debug("AFTER STEP: Closing WebDriver");
             getDriver().close();
@@ -28,7 +28,13 @@ public class Hooks {
         }
     }
 
-    @Rule
-    public ScreenShotOnFailure failure = new ScreenShotOnFailure();
+    @After(order = 10000)
+    public void takeScreenshotOnFailure(Scenario scenario){
+        if(scenario.isFailed()){
+            final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png");
+        }
+
+    }
 
 }
