@@ -19,7 +19,7 @@ public class Hooks {
         getDriver().manage().window().maximize();
     }
 
-    @After(order = 20000)
+    @After(order = 10000)
     public void afterClass() {
         if (null != getDriver()) {
             logger().debug("AFTER STEP: Closing WebDriver");
@@ -28,7 +28,7 @@ public class Hooks {
         }
     }
 
-    @After(order = 10000)
+    @After(order = 20000)
     public void takeScreenshotOnFailure(Scenario scenario){
         if(scenario.isFailed()){
             final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
