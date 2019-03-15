@@ -1,5 +1,7 @@
 # User-specific stuff
 .idea/
+*.log
+screenShots/
 
 
 # File-based project format
