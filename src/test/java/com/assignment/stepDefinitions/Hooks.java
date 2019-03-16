@@ -3,6 +3,8 @@ package com.assignment.stepDefinitions;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -12,15 +14,20 @@ import static com.assignment.core.WebDriverInitializer.setUpDriver;
 
 public class Hooks {
 
-    @Before
-    public void beforeClass() {
+    @Before("@API")
+    public static void beforeClassAPI(){
+        LogManager.getRootLogger().setLevel(Level.INFO);
+    }
+
+    @Before("@Selenium")
+    public void beforeClassSelenium() {
         setUpDriver();
         logger().debug("BEFORE STEP: Maximizing browser window");
         getDriver().manage().window().maximize();
     }
 
-    @After(order = 10000)
-    public void afterClass() {
+    @After(value = "@Selenium", order = 10000)
+    public void afterClassSelenium() {
         if (null != getDriver()) {
             logger().debug("AFTER STEP: Closing WebDriver");
             getDriver().close();
@@ -28,7 +35,7 @@ public class Hooks {
         }
     }
 
-    @After(order = 20000)
+    @After(value = "@Selenium", order = 20000)
     public void takeScreenshotOnFailure(Scenario scenario){
         if(scenario.isFailed()){
             final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);

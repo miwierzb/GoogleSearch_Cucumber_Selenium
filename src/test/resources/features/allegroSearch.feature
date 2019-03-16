@@ -1,3 +1,4 @@
+@Selenium
 @AllegroSearch
 Feature: allegroSearch
 
@@ -21,6 +22,6 @@ Feature: allegroSearch
     Then  I should see correctly filtered results from <filterFrom> gb to <filterTo> gb
 
     Examples:
-    | filterFrom | filterTo |
+    | filterFrom | filterTo  |
     | 500        | 1000      |
     | 200        | 500       |

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import static com.assignment.core.CustomLogger.logger;
 
-public class AllegroStepDefs {
+public class AllegroStepDefinitions {
 
     private AllegroHomePage allegroHomePage;
     private AllegroElektronikaPage allegroElektronikaPage;
