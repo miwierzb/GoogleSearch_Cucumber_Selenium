@@ -67,11 +67,7 @@ public abstract class BasePage implements IBasePage {
 
     protected void waitForPageToLoad() {
         logger().debug("Waiting for page to load");
-        ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
-            }
-        };
+        ExpectedCondition<Boolean> pageLoadCondition = driver -> ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
         WebDriverWait wait = new WebDriverWait(getDriver(), 30);
         wait.until(pageLoadCondition);
     }
