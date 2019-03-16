@@ -10,7 +10,7 @@ public class AllegroKomputeryPage extends BasePage {
 
     private final static By selectorKomputeryText = By.xpath("//span[@class='listing-title__category' and text()='Komputery']");
     private final static By selectorKomputeryBreadcrumb = By.xpath("//div[@data-role='breadcrumb-item']//*[@itemprop='name' and text()='Komputery']");
-    private final static By selectorDyskiIPamieciPrzenosneButton = By.cssSelector("[data-analytics-click-value='Dyski i pamięci przenośne']");
+    private final static By selectorDyskiIPamieciPrzenosneButton = By.xpath("//a[text()='Dyski i pamięci przenośne']");
     private final static String url = "https://allegro.pl/kategoria/komputery";
 
     @Override

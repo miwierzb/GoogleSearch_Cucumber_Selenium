@@ -1,5 +1,7 @@
 # User-specific stuff
 .idea/
+logging.log
+screenShots/
 
 
 # File-based project format
@@ -8,3 +10,4 @@
 
 # IntelliJ
 out/
+target/
