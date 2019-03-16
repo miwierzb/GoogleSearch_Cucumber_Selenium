@@ -10,7 +10,7 @@ public class AllegroDyskiIPamieciPrzenosnePage extends BasePage {
 
     private final static By selectorDyskiIPamieciPrzenosneText = By.xpath("//span[@class='listing-title__category' and text()='Dyski i pamięci przenośne']");
     private final static By selectorDyskiIPamieciPrzenosneBreadcrumb = By.xpath("//div[@data-role='breadcrumb-item']//*[@itemprop='name' and text()='Dyski i pamięci przenośne']");
-    private final static By selectorDyskiZewnetrzneIPrzenosneButton = By.cssSelector("[data-analytics-click-value='Dyski zewnętrzne i przenośne']");
+    private final static By selectorDyskiZewnetrzneIPrzenosneButton = By.xpath("//a[text()='Dyski zewnętrzne i przenośne']");
     private final static String url = "https://allegro.pl/kategoria/dyski-i-pamieci-przenosne";
 
     @Override

@@ -9,6 +9,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 
+import java.util.ArrayList;
+
 import static com.assignment.core.CustomLogger.logger;
 
 public class AllegroStepDefs {
@@ -73,14 +75,69 @@ public class AllegroStepDefs {
     }
 
     @When("^I apply search filters from (.+) gb to (.+) gb$")
-    public void applySearchFilters(int from, int to){
-
+    public void applySearchFilters(String filterFrom, String filterTo) {
+        logger().info("STEP: Verifying if Allegro 'Search Filters' Module is loaded");
+        allegroSearchFilters = new AllegroSearchFilters();
+        Assert.assertTrue("'Search Filters' Module is not loaded", allegroSearchFilters.isLoaded());
+        Assert.assertTrue("'Pojemnosc dysku' Filter is not displayed", allegroSearchFilters.isFilterPojemnoscDyskuDisplyed());
+        logger().info("STEP: Entering data to 'Pojemnosc Dysku' filter, From: " + filterFrom + ", To: " + filterTo);
+        allegroSearchFilters.enterFilterPojemnoscDyskuFromText(filterFrom);
+        allegroSearchFilters.enterFilterPojemnoscDyskuToText(filterTo);
+        logger().info("STEP: Verifying if filter: " + "od " + filterFrom +" GB" + " is applied");
+        Assert.assertEquals("Filter '" + "od " + filterFrom +" GB" + "' is not applied", "od " + filterFrom +" GB", allegroSearchFilters.getChosenAppliedFiltersText(0));
+        logger().info("STEP: Verifying if filter: " + "do " + filterTo +" GB" + " is applied");
+        Assert.assertEquals("Filter '" + "do " + filterTo +" GB" + "' is not applied", "do " + filterTo +" GB", allegroSearchFilters.getChosenAppliedFiltersText(1));
+        logger().info("STEP: Verifying if Allegro 'Search Results' Module is loaded");
+        allegroSearchResults = new AllegroSearchResults();
+        Assert.assertTrue("'Search Results' Module is not loaded", allegroSearchResults.isLoaded());
+        logger().info("STEP: Verifying if 'Sortowanie' Filter is displayed");
+        Assert.assertTrue("'Sortowanie' Filter is not displayed", allegroSearchResults.isFilterSortowanieDisplayed());
+        logger().info("STEP: Selecting option from 'Sortownie' dropdown with value: " + "pd");
+        allegroSearchResults.selectOptionFromSortowanieDropdown("pd");
     }
 
-    @Then("^I should see correctly filtered results$")
-    public void verifyCorrectlyFilteredResults(){
-
+    @Then("^I should see correctly filtered results from (.+) gb to (.+) gb$")
+    public void verifyCorrectlyFilteredResults(String filterFrom, String filterTo){
+        logger().info("STEP: Verifying if Search Results items are displayed, if price is sorted descending and if filter 'Pojemnosc Dysku' from: " + filterFrom + ", to: " + filterTo + " is applied");
+        Assert.assertTrue("Result list is empty!", allegroSearchResults.isAnyResultDisplayed());
+        Assert.assertTrue("Prices are not sorted descending!", isItemPriceSortedDescending());
+        Assert.assertTrue("Discs capacity is not in: " + filterFrom + " - " + filterTo + " range!", isResultDiscsCapacityInGivenGbRange(filterFrom, filterTo));
     }
 
+    private boolean isItemPriceSortedDescending(){
+        ArrayList<String> itemPrices = allegroSearchResults.getSearchResultsPricesTexts();
+        boolean sorted = true;
+        for (int i = 1; i < itemPrices.size(); i++) {
+            if (Double.parseDouble(itemPrices.get(i-1).split("( zł)")[0].replace(",", ".").replace(" ", ""))
+                    - Double.parseDouble(itemPrices.get(i).split("( zł)")[0].replace(",", ".")) < 0){
+                sorted = false;
+                logger().info("Price is not sorted - element " + (i-1) + ": " + itemPrices.get(i-1) + " is lower that element " + i + ": " + itemPrices.get(i));
+            }
+        }
+        if(sorted){
+            logger().info("Items correctly sorted by price descending");
+        } else {
+            logger().info("Items NOT sorted by price descending");
+        }
+        return sorted;
+    }
+
+    private boolean isResultDiscsCapacityInGivenGbRange(String filterFrom, String filterTo){
+        ArrayList<String> itemDiscCapacity = allegroSearchResults.getSearchResultsDiskCapacityTexts();
+        boolean filterApplied = true;
+        for (String capacity : itemDiscCapacity) {
+            if (Integer.parseInt(capacity.split("[ ]")[0]) < Integer.parseInt(filterFrom)
+                    || Integer.parseInt(capacity.split("[ ]")[0]) > Integer.parseInt(filterTo)) {
+                filterApplied = false;
+                logger().info("Disc capacity " + capacity + " is not between " + filterFrom + " and " +filterTo + " range");
+            }
+        }
+        if(filterApplied){
+            logger().info("Items correctly filtered");
+        } else {
+            logger().info("Items NOT correctly filtered");
+        }
+        return filterApplied;
+    }
 
 }

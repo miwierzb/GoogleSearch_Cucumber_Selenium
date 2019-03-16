@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         junit = "--step-notifications",
         plugin = {"pretty" , "html:target/Cucumber"},
-        features="src/test/java/com/assignment/features")
+        features="src/test/resources/features")
 public class CucumberTestRunner {
 }
 

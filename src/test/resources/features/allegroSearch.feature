@@ -11,4 +11,4 @@ Feature: allegroSearch
     Given User is on Allegro Home Page
     And   I navigate to 'Dyski zewnetrzne i przenosne' page
     When  I apply search filters from 500 gb to 1000 gb
-    Then  I should see correctly filtered results
+    Then  I should see correctly filtered results from 500 gb to 1000 gb

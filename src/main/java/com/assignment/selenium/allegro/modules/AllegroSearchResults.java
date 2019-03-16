@@ -16,9 +16,9 @@ public class AllegroSearchResults extends BasePage {
     private final static By selectorSearchModule = By.cssSelector("[data-box-name='items container']");
     private final static By selectorFilterSortowanieBox = By.cssSelector(".opbox-listing-sort");
     private final static By selectorFilterSortowanieDropdown = By.cssSelector(".opbox-listing-sort select");
-    private final static By selectorNoSponsoredPriceText = By.xpath("//article[not(@data-analytics-view-label='showSponsoredItems')]//*[@class='ecb7eff']");
+    private final static By selectorNoSponsoredPriceText = By.xpath("//article[not(@data-analytics-view-label='showSponsoredItems')]//*[@class='fee8042']");
     private final static By selectorNoSponsoredDiskCapacityText = By.xpath("//article[not(@data-analytics-view-label='showSponsoredItems')]//*[span[contains(text(),'GB')]]");
-    private final static By selectorLoadingSpinner = By.cssSelector(".b782c2f");
+    private final static By selectorLoadingSpinner = By.cssSelector(".bef635e");
     private final static By selectorSechResultItems = By.cssSelector("article[data-item='true']");
 
     @Override
