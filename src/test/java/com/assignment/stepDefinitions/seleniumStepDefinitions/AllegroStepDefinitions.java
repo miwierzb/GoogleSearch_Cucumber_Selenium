@@ -1,10 +1,9 @@
-package com.assignment.stepDefinitions;
+package com.assignment.stepDefinitions.seleniumStepDefinitions;
 
 import com.assignment.selenium.allegro.modules.AllegroSearchFilters;
 import com.assignment.selenium.allegro.modules.AllegroSearchResults;
 import com.assignment.selenium.allegro.pages.*;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -27,6 +26,7 @@ public class AllegroStepDefinitions {
     public void userNavigatesToAllegroHomePage(){
         logger().info("BEFORE TEST STEP: Navigating to Allegro Home Page");
         allegroHomePage = new AllegroHomePage();
+        allegroHomePage.load();
     }
 
     @Then("^User is on Allegro Home Page$")

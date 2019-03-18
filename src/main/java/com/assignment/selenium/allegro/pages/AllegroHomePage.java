@@ -18,7 +18,6 @@ public class AllegroHomePage extends BasePage {
 
     @Override
     public boolean isLoaded() {
-        load();
         logger().info("Checking if Allegro 'Home' Page is loaded");
         if (getDriver().getCurrentUrl().equals(url)) {
             logger().info("'Home' Page LOADED");
