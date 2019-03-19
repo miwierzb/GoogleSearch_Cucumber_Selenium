@@ -22,23 +22,23 @@ public class AllegroStepDefinitions {
     private AllegroSearchFilters allegroSearchFilters;
     private AllegroSearchResults allegroSearchResults;
 
-    @When("^User navigates to Allegro Home Page$")
+    @When("^I navigate to Allegro Home Page$")
     public void userNavigatesToAllegroHomePage(){
-        logger().info("BEFORE TEST STEP: Navigating to Allegro Home Page");
+        logger().info("BEFORE TEST STEP: I navigate to Allegro Home Page");
         allegroHomePage = new AllegroHomePage();
         allegroHomePage.load();
     }
 
-    @Then("^User is on Allegro Home Page$")
+    @Then("^I'm on Allegro Home Page$")
     public void userIsOnAllegroHomePage(){
-        logger().info("BEFORE TEST STEP: Verifying if Allegro 'Home' Page is loaded");
+        logger().info("BEFORE TEST STEP: I'm on Allegro Home Page");
         Assert.assertTrue("Home page is not loaded - wrong url", allegroHomePage.isLoaded());
         Assert.assertTrue("Header Search Box on Homge Page is not displayed", allegroHomePage.isHeaderSearchBoxDisplayed());
     }
 
-    @And("^User closes Pop Up if it is displayed$")
+    @And("^I close Pop Up if it is displayed$")
     public void userClosesPopUpIfItIsDisplayed(){
-        logger().info("BEFORE TEST STEP: Checking if PopUp is displayed");
+        logger().info("BEFORE TEST STEP: I close Pop Up if it is displayed");
         if (allegroHomePage.isNieZgadzamSieButtonDisplayed()){
             logger().info("PopUp is displayed, clicking 'Nie zgadzam sie' button");
             allegroHomePage.clickNieZgadzamSieButton();
@@ -48,27 +48,20 @@ public class AllegroStepDefinitions {
 
     @And("^I navigate to 'Dyski zewnetrzne i przenosne' page$")
     public void navigateToDyskiZewnetrzneIPrzenosnePage(){
-        logger().info("STEP: Clicking 'Elektronika' Button");
+        logger().info("STEP: I navigate to 'Dyski zewnetrzne i przenosne' page");
         allegroElektronikaPage = allegroHomePage.clickElektronikaButton();
-        logger().info("STEP: Verifying if Allegro 'Elektronika' Page is loaded");
         Assert.assertTrue("'Elektronika' page is not loaded - wrong url", allegroElektronikaPage.isLoaded());
         Assert.assertTrue("'Elektronika' text is not displayed", allegroElektronikaPage.isElektronikaTextDisplayed());
         Assert.assertTrue("Categories Layout is not displayed", allegroElektronikaPage.isCategoriesLayoutFrameDisplayed());
-        logger().info("STEP: Clicking 'Komputery' Button");
         allegroKomputeryPage = allegroElektronikaPage.clickKomputeryButton();
-        logger().info("STEP: Verifying if Allegro 'Komputery' Page is loaded");
         Assert.assertTrue("'Komputery' page is not loaded - wrong url", allegroKomputeryPage.isLoaded());
         Assert.assertTrue("'Komputery' text is not displayed", allegroKomputeryPage.isKomputeryTextDisplayed());
         Assert.assertTrue("'Komputery' breadcrumb is not displayed", allegroKomputeryPage.isKomputeryBreadcrumbDisplayed());
-        logger().info("STEP: Clicking 'Dyski i pamieci przenosne' Button");
         allegroDyskiIPamieciPrzenosnePage = allegroKomputeryPage.clickDyskiIPamieciPrzenosneButton();
-        logger().info("STEP: Verifying if Allegro 'Dyski i pamieci przenosne' Page is loaded");
         Assert.assertTrue("'Dyski i pamieci przenosne' page is not loaded - wrong url", allegroDyskiIPamieciPrzenosnePage.isLoaded());
         Assert.assertTrue("'Dyski i pamieci przenosne' text is not displayed", allegroDyskiIPamieciPrzenosnePage.isDyskiIPamieciPrzenosneTextDisplayed());
         Assert.assertTrue("'Dyski i pamieci przenosne' breadcrumb is not displayed", allegroDyskiIPamieciPrzenosnePage.isDyskiIPamieciPrzenosneBreadcrumbDisplayed());
-        logger().info("STEP: Clicking 'Dyski zewnetrzne i przenosne' Button");
         allegroDyskiZewnetrzneIPrzenosnePage = allegroDyskiIPamieciPrzenosnePage.clickDyskiZewnetrzneIPrzenosneButton();
-        logger().info("STEP: Verifying if Allegro 'Dyski zewnętrzne i przenośne' Page is loaded");
         Assert.assertTrue("'Dyski zewnętrzne i przenośne' page is not loaded - wrong url", allegroDyskiZewnetrzneIPrzenosnePage.isLoaded());
         Assert.assertTrue("'Dyski zewnętrzne i przenośne' text is not displayed", allegroDyskiZewnetrzneIPrzenosnePage.isDyskiZewnetrzneIPrzenosneTextDisplayed());
         Assert.assertTrue("'Dyski zewnętrzne i przenośne' breadcrumb is not displayed", allegroDyskiZewnetrzneIPrzenosnePage.isDyskiZewnetrzneIPrzenosneBreadcrumbDisplayed());
@@ -76,29 +69,25 @@ public class AllegroStepDefinitions {
 
     @When("^I apply search filters from (.+) gb to (.+) gb$")
     public void applySearchFilters(String filterFrom, String filterTo) {
-        logger().info("STEP: Verifying if Allegro 'Search Filters' Module is loaded");
+        logger().info("STEP: I apply search filters from " + filterFrom + " gb to " + filterTo + " gb");
         allegroSearchFilters = new AllegroSearchFilters();
         Assert.assertTrue("'Search Filters' Module is not loaded", allegroSearchFilters.isLoaded());
         Assert.assertTrue("'Pojemnosc dysku' Filter is not displayed", allegroSearchFilters.isFilterPojemnoscDyskuDisplyed());
-        logger().info("STEP: Entering data to 'Pojemnosc Dysku' filter, From: " + filterFrom + ", To: " + filterTo);
         allegroSearchFilters.enterFilterPojemnoscDyskuFromText(filterFrom);
         allegroSearchFilters.enterFilterPojemnoscDyskuToText(filterTo);
-        logger().info("STEP: Verifying if filter: " + "od " + filterFrom +" GB" + " is applied");
+        logger().info("Verifying if filter: " + "od " + filterFrom +" GB" + " is applied");
         Assert.assertEquals("Filter '" + "od " + filterFrom +" GB" + "' is not applied", "od " + filterFrom +" GB", allegroSearchFilters.getChosenAppliedFiltersText(0));
-        logger().info("STEP: Verifying if filter: " + "do " + filterTo +" GB" + " is applied");
+        logger().info("Verifying if filter: " + "do " + filterTo +" GB" + " is applied");
         Assert.assertEquals("Filter '" + "do " + filterTo +" GB" + "' is not applied", "do " + filterTo +" GB", allegroSearchFilters.getChosenAppliedFiltersText(1));
-        logger().info("STEP: Verifying if Allegro 'Search Results' Module is loaded");
         allegroSearchResults = new AllegroSearchResults();
         Assert.assertTrue("'Search Results' Module is not loaded", allegroSearchResults.isLoaded());
-        logger().info("STEP: Verifying if 'Sortowanie' Filter is displayed");
         Assert.assertTrue("'Sortowanie' Filter is not displayed", allegroSearchResults.isFilterSortowanieDisplayed());
-        logger().info("STEP: Selecting option from 'Sortownie' dropdown with value: " + "pd");
         allegroSearchResults.selectOptionFromSortowanieDropdown("pd");
     }
 
     @Then("^I should see correctly filtered results from (.+) gb to (.+) gb$")
     public void verifyCorrectlyFilteredResults(String filterFrom, String filterTo){
-        logger().info("STEP: Verifying if Search Results items are displayed, if price is sorted descending and if filter 'Pojemnosc Dysku' from: " + filterFrom + ", to: " + filterTo + " is applied");
+        logger().info("STEP: I should see correctly filtered results from " + filterFrom + " gb to " + filterTo + " gb");
         Assert.assertTrue("Result list is empty!", allegroSearchResults.isAnyResultDisplayed());
         Assert.assertTrue("Prices are not sorted descending!", isItemPriceSortedDescending());
         Assert.assertTrue("Discs capacity is not in: " + filterFrom + " - " + filterTo + " range!", isResultDiscsCapacityInGivenGbRange(filterFrom, filterTo));

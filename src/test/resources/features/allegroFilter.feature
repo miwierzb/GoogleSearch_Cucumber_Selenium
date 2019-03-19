@@ -3,19 +3,28 @@
 @AllegroFilter
 Feature: allegroSearch
 
-  Background:
-    When  User navigates to Allegro Home Page
-    Then  User is on Allegro Home Page
-    And   User closes Pop Up if it is displayed
+  # There are many ways of writing test scenarios in Gherkin syntax.
+  # I've been working on different projects and the way scenario was written was discussed with client at the beginning
+  # (even if some of these are considered bad practice)
+  # I will show two ways of writing scenarios that were most commonly used below.
 
-  Scenario: validate result for custom search with filters for 'Dyski zewnetrzne i przenosne'
-    Given User is on Allegro Home Page
+  Background:
+    When  I navigate to Allegro Home Page
+    Then  I'm on Allegro Home Page
+    And   I close Pop Up if it is displayed
+
+  #Scenarios below were written in a 'business' way, with only few steps describing most important events.
+  #Few different actions may be implemented under one step to keep scenario short.
+
+  Scenario: Custom search results with filters for 'Dyski zewnetrzne i przenosne'
+    Given I'm on Allegro Home Page
     And   I navigate to 'Dyski zewnetrzne i przenosne' page
     When  I apply search filters from 500 gb to 1000 gb
     Then  I should see correctly filtered results from 500 gb to 1000 gb
 
-  Scenario Outline: validate result for custom search with filters for 'Dyski zewnetrzne i przenosne' for different filters
-    Given User is on Allegro Home Page
+
+  Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne'
+    Given I'm on Allegro Home Page
     And   I navigate to 'Dyski zewnetrzne i przenosne' page
     When  I apply search filters from <filterFrom> gb to <filterTo> gb
     Then  I should see correctly filtered results from <filterFrom> gb to <filterTo> gb
@@ -24,3 +33,34 @@ Feature: allegroSearch
     | filterFrom | filterTo  |
     | 500        | 1000      |
     | 200        | 500       |
+
+  #Scenario below is written in a more 'technical' way where from business point of view all actions and validations
+  # are important and we want to show this in test scenario.
+  #Most of the steps in this case contains singe actions, all validations are separated from actions.
+
+  Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne'
+
+    Given I'm on Allegro Home Page
+
+    When  I hover over 'Elektronika' link and click 'Komputery' button
+    Then  I should land on 'Komputery' page
+
+    When  I click on 'Dyski i pamieci przenosne' button
+    Then  I should land on 'Dyski i pamieci przenosne' page
+
+    When  I click on 'Dyski zewnetrzne i przenosne' button
+    Then  I should land on 'Dyski zewnetrzne i przenosne' page
+    And   I should see Search filter module loaded
+
+    When  I enter filter 'Pojemnosc dyski' from <filterFrom> gb to <filterTo> gb
+    Then  I should see correct filters applied
+    And   I should see Search Result page loaded
+    And   I should see 'Sortowanie' filter
+
+    When  I select <option> from 'Sortowanie' filter
+    Then  I should see correctly filtered results for <filterFrom> gb to <filterTo> gb and <option>
+
+    Examples:
+      | filterFrom | filterTo  | option           |
+      | 500        | 1000      | price_descending |
+      | 200        | 500       | price_descending |
