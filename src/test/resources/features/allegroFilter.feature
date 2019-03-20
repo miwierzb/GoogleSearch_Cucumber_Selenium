@@ -51,8 +51,9 @@ Feature: allegroSearch
     When  I click on 'Dyski zewnetrzne i przenosne' button
     Then  I should land on 'Dyski zewnetrzne i przenosne' page
     And   I should see Search filter module loaded
+    And   I should see 'Pojemnosc dysku' filter in Search filter module
 
-    When  I enter filter 'Pojemnosc dyski' from <filterFrom> gb to <filterTo> gb
+    When  I enter from <filterFrom> gb to <filterTo> gb in 'Pojemnosc dysku' filter
     Then  I should see correct filters applied
     And   I should see Search Result page loaded
     And   I should see 'Sortowanie' filter
