@@ -72,6 +72,12 @@
             <version>4.2.5</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>4.2.5</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

@@ -23,7 +23,7 @@ Feature: allegroSearch
     Then  I should see correctly filtered results from 500 gb to 1000 gb
 
 
-  Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne'
+  Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne' - short
     Given I'm on Allegro Home Page
     And   I navigate to 'Dyski zewnetrzne i przenosne' page
     When  I apply search filters from <filterFrom> gb to <filterTo> gb
@@ -37,8 +37,8 @@ Feature: allegroSearch
   #Scenario below is written in a more 'technical' way where from business point of view all actions and validations
   # are important and we want to show this in test scenario.
   #Most of the steps in this case contains singe actions, all validations are separated from actions.
-
-  Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne'
+  @AllegroFilterr
+  Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne' - long
 
     Given I'm on Allegro Home Page
 
@@ -63,4 +63,4 @@ Feature: allegroSearch
     Examples:
       | filterFrom | filterTo  | option           |
       | 500        | 1000      | price_descending |
-      | 200        | 500       | price_descending |
+    #  | 200        | 500       | price_descending |
