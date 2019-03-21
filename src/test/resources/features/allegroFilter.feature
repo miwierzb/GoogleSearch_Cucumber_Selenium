@@ -54,8 +54,8 @@ Feature: allegroSearch
     And   I should see 'Pojemnosc dysku' filter in Search filter module
 
     When  I enter from <filterFrom> gb to <filterTo> gb in 'Pojemnosc dysku' filter
-    Then  I should see correct filters applied
-    And   I should see Search Result page loaded
+    Then  I should see from <filterFrom> gb to <filterTo> gb filter applied
+    And   I should see Search Results module loaded
     And   I should see 'Sortowanie' filter
 
     When  I select <option> from 'Sortowanie' filter
@@ -64,4 +64,4 @@ Feature: allegroSearch
     Examples:
       | filterFrom | filterTo  | option           |
       | 500        | 1000      | price_descending |
-    #  | 200        | 500       | price_descending |
+      | 200        | 500       | price_ascending  |
