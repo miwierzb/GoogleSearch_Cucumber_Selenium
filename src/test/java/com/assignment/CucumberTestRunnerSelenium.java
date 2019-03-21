@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@Selenium",
+        tags = "@AllegroFilterr",
         junit = "--step-notifications",
         plugin = {"pretty" , "html:target/Cucumber"},
         features="src/test/resources/features")

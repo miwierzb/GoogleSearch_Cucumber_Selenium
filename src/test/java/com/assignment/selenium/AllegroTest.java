@@ -81,6 +81,7 @@ public class AllegroTest extends BaseTest {
     private void goToAllegroHomePage(){
         logger().info("BEFORE TEST STEP: Navigating to Allegro Home Page");
         allegroHomePage = new AllegroHomePage();
+        allegroHomePage.load();
     }
 
     private void verifyIsHomePageLoaded(){

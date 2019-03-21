@@ -1,19 +1,20 @@
-# testAutomationExamples project
+# CucumberTestAutomationExamples project
 
 ## Description
 
-testExample project contains a simple Selenium Test Automation Framework with sample Selenium test + API sample test (rest assured).
+testExample project contains a simple Cucumber for Selenium and API Test Automation (RestAssured) sample framework with test examples .
 
- Note - all features were tested on Windows 32bit and Chrome browser
+ Note - all features were tested on Windows 32/64 bit and Chrome browser
 
-**Selenium Test Automation Framework includes:**
-- 'PropertiesManager' - test data imported from test.data.properties file
+**Cucumber for Selenium and API Test Automation Framework includes:**
+- 'PropertiesManager' - initial test data imported from test.data.properties file
 - 'CustomLogger' - Custom Logger to stdout and file including 'WebEventListener' event custom logs based on log4j (configuration file - log4j.properties, logging to logging.log file in main project directory)
+- 'SharedTestData' - container for test data that can be dynamically added and used during test execution
 - 'ScreenShotOnFailure' - taking screeshot on failure and saving it to .png file in screenShots/ directory
 - Ability to choose browser from test.data.properties file ('WebDriverInitializer' class) (package includes webdrivers for chrome and mozilla firefox)
 - Supporting POM model
 
-Set up with JUnit and Maven + Selenium WebDriver and Rest Assured
+Set up with Cucumber + JUnit and Maven + Selenium WebDriver and Rest Assured, tests written in Java.
 
 ## Installation
 

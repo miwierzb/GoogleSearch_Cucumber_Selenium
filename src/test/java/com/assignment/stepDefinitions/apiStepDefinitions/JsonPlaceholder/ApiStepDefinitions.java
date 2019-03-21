@@ -1,4 +1,4 @@
-package com.assignment.stepDefinitions;
+package com.assignment.stepDefinitions.apiStepDefinitions.JsonPlaceholder;
 
 import com.assignment.api.Comments;
 import com.jayway.restassured.response.Response;
