@@ -62,7 +62,7 @@ public class CommonAllegroStepDefinitions {
             default:
                 logger().info("Option: " + option + " not supported");
         }
-        logger().info("STEP: I select '" + option + "' from 'Sortowanie' filter");
+        logger().info("Selecting '" + option + "' from 'Sortowanie' filter");
         allegroStepData.allegroSearchResults.selectOptionFromSortowanieDropdown(option);
     }
 
