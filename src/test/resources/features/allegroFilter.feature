@@ -15,29 +15,27 @@ Feature: allegroSearch
 
   #Scenarios below were written in a 'business' way, with only few steps describing most important events.
   #Few different actions may be implemented under one step to keep scenario short.
-
   Scenario: Custom search results with filters for 'Dyski zewnetrzne i przenosne'
     Given I'm on Allegro Home Page
     And   I navigate to 'Dyski zewnetrzne i przenosne' page
-    When  I apply search filters from 500 gb to 1000 gb
-    Then  I should see correctly filtered results from 500 gb to 1000 gb
+    When  I apply search filters from 500 gb to 1000 gb and price_descending sorting
+    Then  I should see correctly filtered results for 500 gb to 1000 gb and price_descending
 
 
   Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne' - short
     Given I'm on Allegro Home Page
     And   I navigate to 'Dyski zewnetrzne i przenosne' page
-    When  I apply search filters from <filterFrom> gb to <filterTo> gb
-    Then  I should see correctly filtered results from <filterFrom> gb to <filterTo> gb
+    When  I apply search filters from <filterFrom> gb to <filterTo> gb and <option> sorting
+    Then  I should see correctly filtered results for <filterFrom> gb to <filterTo> gb and <option>
 
     Examples:
-    | filterFrom | filterTo  |
-    | 500        | 1000      |
-    | 200        | 500       |
+      | filterFrom | filterTo  | option           |
+      | 500        | 1000      | price_descending |
+      | 200        | 500       | price_ascending  |
 
   #Scenario below is written in a more 'technical' way where from business point of view all actions and validations
   # are important and we want to show this in test scenario.
   #Most of the steps in this case contains singe actions, all validations are separated from actions.
-  @AllegroFilterr
   Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne' - long
 
     Given I'm on Allegro Home Page
