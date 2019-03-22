@@ -9,16 +9,15 @@ import static com.assignment.core.CustomLogger.logger;
 
 public class WebDriverInitializer {
 
-    private static final PropertiesManager properties = new PropertiesManager();
-    private static final String WEB_DRIVER = properties.getProperty("selenium.webdriver");
+    private static final String WEB_DRIVER = PropertiesManager.getProperty("selenium.webdriver");
     private static WebDriver wb_driver;
     private static EventFiringWebDriver driver;
     private static WebEventListener webEventListener;
 
     public static void setUpDriver() {
-        System.setProperty("webdriver." + WEB_DRIVER + ".driver","./webDrivers/" + WEB_DRIVER + "driver.exe");
+        System.setProperty("webdriver." + WEB_DRIVER + ".driver", "./webDrivers/" + WEB_DRIVER + "driver.exe");
         logger().debug("Creating new " + WEB_DRIVER + " instance");
-        switch(WEB_DRIVER) {
+        switch (WEB_DRIVER) {
             case "chrome":
                 wb_driver = new ChromeDriver();
                 break;
@@ -33,7 +32,8 @@ public class WebDriverInitializer {
         driver.register(webEventListener);
     }
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
         return driver;
     }
+
 }

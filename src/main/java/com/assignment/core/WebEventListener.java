@@ -87,6 +87,7 @@ public class WebEventListener extends AbstractWebDriverEventListener {
 
     @Override
     public void afterGetText(WebElement element, WebDriver driver, String text) {
-        logger().debug("Got text: " + text +" from: " + element.toString());
+        logger().debug("Got text: " + text + " from: " + element.toString());
     }
+
 }
