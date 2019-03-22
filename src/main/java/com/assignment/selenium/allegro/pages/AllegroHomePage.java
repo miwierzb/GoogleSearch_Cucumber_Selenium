@@ -34,33 +34,33 @@ public class AllegroHomePage extends BasePage {
         waitForPageToLoad();
     }
 
-    public boolean isNieZgadzamSieButtonDisplayed(){
+    public boolean isNieZgadzamSieButtonDisplayed() {
         logger().info("Checking if 'Nie zgadzam sie' button is displayed");
         waitForElementToAppearNoException(selectorNieZgadzamSieButton);
         return getDriver().findElement(selectorNieZgadzamSieButton).isDisplayed();
     }
 
-    public void clickNieZgadzamSieButton(){
+    public void clickNieZgadzamSieButton() {
         logger().info("Clicking 'Nie zgadzam sie' button");
         waitForElementToBeClickable(selectorNieZgadzamSieButton);
         getDriver().findElement(selectorNieZgadzamSieButton).click();
         waitForElementToDisappear(selectorNieZgadzamSieButton);
     }
 
-    public AllegroElektronikaPage clickElektronikaButton(){
+    public AllegroElektronikaPage clickElektronikaButton() {
         logger().info("Clicking 'Elektronika' button");
         waitForElementToBeClickable(selectorElektonikaButton);
         getDriver().findElement(selectorElektonikaButton).click();
         return new AllegroElektronikaPage();
     }
 
-    public boolean isHeaderSearchBoxDisplayed(){
+    public boolean isHeaderSearchBoxDisplayed() {
         logger().info("Checking if header Search Box is displayed");
         waitForElementToAppearNoException(selectorHeaderSearchBox);
         return getDriver().findElement(selectorHeaderSearchBox).isDisplayed();
     }
 
-    public AllegroKomputeryPage hoverOverElektronikaAndClickKomputeryButton(){
+    public AllegroKomputeryPage hoverOverElektronikaAndClickKomputeryButton() {
         logger().info("Hovering over 'Elektronika' text and clicking 'Komputery' Button");
         waitForElementToAppear(selectorElektonikaButton);
         WebElement elektronikaButton = getDriver().findElement(selectorElektonikaButton);

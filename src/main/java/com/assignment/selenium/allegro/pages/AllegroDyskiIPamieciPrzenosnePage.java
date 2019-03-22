@@ -43,7 +43,7 @@ public class AllegroDyskiIPamieciPrzenosnePage extends BasePage {
         return getDriver().findElement(selectorDyskiIPamieciPrzenosneBreadcrumb).isDisplayed();
     }
 
-    public AllegroDyskiZewnetrzneIPrzenosnePage clickDyskiZewnetrzneIPrzenosneButton(){
+    public AllegroDyskiZewnetrzneIPrzenosnePage clickDyskiZewnetrzneIPrzenosneButton() {
         logger().info("Clicking 'Dyski zewnetrzne i przenosne' button");
         waitForElementToBeClickable(selectorDyskiZewnetrzneIPrzenosneButton);
         getDriver().findElement(selectorDyskiZewnetrzneIPrzenosneButton).click();

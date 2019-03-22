@@ -15,7 +15,7 @@ import static com.assignment.core.WebDriverInitializer.setUpDriver;
 public class Hooks {
 
     @Before("@API")
-    public static void beforeClassAPI(){
+    public static void beforeClassAPI() {
         LogManager.getRootLogger().setLevel(Level.INFO);
     }
 
@@ -36,8 +36,8 @@ public class Hooks {
     }
 
     @After(value = "@Selenium", order = 20000)
-    public void takeScreenshotOnFailure(Scenario scenario){
-        if(scenario.isFailed()){
+    public void takeScreenshotOnFailure(Scenario scenario) {
+        if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot, "image/png");
         }

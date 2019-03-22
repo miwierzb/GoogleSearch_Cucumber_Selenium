@@ -7,7 +7,7 @@ Feature: apiJSONPlaceholder
     Then  Response is received with status code 200
     And   Response is not empty
     And   Response contains the following fields
-      | email 	 | Jayne_Kuhic@sydney.com	|
+      | email | Jayne_Kuhic@sydney.com |
 
   Scenario Outline: User is able to get filtered response
     Given Webservice is up and running
@@ -17,6 +17,6 @@ Feature: apiJSONPlaceholder
     And   User should see only data that matches filter parameters <postId> amd 'body' that contains <text>
 
     Examples:
-      | postId   | text     |
-      | 1        | non      |
-      | 20       | culpa    |
+      | postId | text  |
+      | 1      | non   |
+      | 20     | culpa |

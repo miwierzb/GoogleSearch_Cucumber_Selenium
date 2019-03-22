@@ -10,10 +10,11 @@ import java.util.List;
 import static com.assignment.core.CustomLogger.logger;
 import static com.assignment.core.WebDriverInitializer.getDriver;
 
-public class AllegroSearchFilters extends BasePage{
+public class AllegroSearchFilters extends BasePage {
 
     private final static By selectorFiltersModule = By.cssSelector("#opbox-filters");
-    private final static By selectorFilterPojemnoscDyskuText = By.xpath("//*[@id='opbox-filters']//*[contains(text(),'Pojemność dysku')]");
+    private final static By selectorFilterPojemnoscDyskuText = By.xpath("//*[@id='opbox-filters']//*[contains(text()," +
+            "'Pojemność dysku')]");
     private final static By selectorFilterPojemnoscDyskuFromTextBox = By.cssSelector("#pojemnosc-dysku-od");
     private final static By selectorFilterPojemnoscDyskuToTextBox = By.cssSelector("#pojemnosc-dysku-do");
     private final static By selectorAppliedFilterField = By.cssSelector("li[title]");
@@ -42,42 +43,40 @@ public class AllegroSearchFilters extends BasePage{
         return getDriver().findElement(selectorFilterPojemnoscDyskuText).isDisplayed();
     }
 
-    public void enterFilterPojemnoscDyskuFromText(String from){
+    public void enterFilterPojemnoscDyskuFromText(String from) {
         logger().info("Entering " + from + " in 'Pojemnosc dysku' FROM textbox");
         waitForElementToBeClickable(selectorFilterPojemnoscDyskuFromTextBox);
         WebElement fromTextBox = getDriver().findElement(selectorFilterPojemnoscDyskuFromTextBox);
         fromTextBox.sendKeys(from);
-        fromTextBox.submit();
         waitForPageToLoad();
     }
 
-    public void enterFilterPojemnoscDyskuToText(String to){
+    public void enterFilterPojemnoscDyskuToText(String to) {
         logger().info("Entering " + to + " in 'Pojemnosc dysku' TO textbox");
         waitForElementToBeClickable(selectorFilterPojemnoscDyskuToTextBox);
         WebElement fromTextBox = getDriver().findElement(selectorFilterPojemnoscDyskuToTextBox);
         fromTextBox.sendKeys(to);
-        fromTextBox.submit();
         waitForPageToLoad();
     }
 
-    public String getChosenAppliedFiltersText(int filterNumber){
+    public String getChosenAppliedFiltersText(int filterNumber) {
         logger().info("Getting text from filter " + filterNumber);
         String text = getAppliedFiltersTexts().get(filterNumber);
         logger().info("Found text: " + text);
         return text;
     }
 
-    private ArrayList<String> getAppliedFiltersTexts(){
+    private ArrayList<String> getAppliedFiltersTexts() {
         logger().info("Getting applied filters list...");
         ArrayList<String> appliedFiltersTexts = new ArrayList<>();
-        for(WebElement element: getAppliedFiltersWebElements()){
+        for (WebElement element : getAppliedFiltersWebElements()) {
             appliedFiltersTexts.add(element.getAttribute("title"));
         }
         logger().info("Logging found elements: " + appliedFiltersTexts);
         return appliedFiltersTexts;
     }
 
-    private List<WebElement> getAppliedFiltersWebElements(){
+    private List<WebElement> getAppliedFiltersWebElements() {
         waitForElementToAppear(selectorAppliedFilterField);
         return getDriver().findElements(selectorAppliedFilterField);
     }

@@ -43,7 +43,7 @@ public class AllegroKomputeryPage extends BasePage {
         return getDriver().findElement(selectorKomputeryBreadcrumb).isDisplayed();
     }
 
-    public AllegroDyskiIPamieciPrzenosnePage clickDyskiIPamieciPrzenosneButton(){
+    public AllegroDyskiIPamieciPrzenosnePage clickDyskiIPamieciPrzenosneButton() {
         logger().info("Clicking 'Dyski i pamieci przenosne' button");
         waitForElementToBeClickable(selectorDyskiIPamieciPrzenosneButton);
         getDriver().findElement(selectorDyskiIPamieciPrzenosneButton).click();

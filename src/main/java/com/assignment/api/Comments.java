@@ -10,7 +10,7 @@ public class Comments {
     public Comments() {
     }
 
-    public Comments(int postId, int id, String name, String email, String body){
+    public Comments(int postId, int id, String name, String email, String body) {
         this.postId = postId;
         this.id = id;
         this.name = name;
@@ -59,6 +59,8 @@ public class Comments {
     }
 
     public String toString() {
-        return "\nComment data: \nid: " + this.id + ",\npostId: " + this.postId + ",\nname: " + this.name + ",\nemail: " + this.email + ",\nbody: " + this.body + "\n";
+        return "\nComment data: \nid: " + this.id + ",\npostId: " + this.postId + ",\nname: " + this.name + ",\nemail" +
+                ": " + this.email + ",\nbody: " + this.body + "\n";
     }
+
 }

@@ -16,8 +16,10 @@ public class AllegroSearchResults extends BasePage {
     private final static By selectorSearchModule = By.cssSelector("[data-box-name='items container']");
     private final static By selectorFilterSortowanieBox = By.cssSelector(".opbox-listing-sort");
     private final static By selectorFilterSortowanieDropdown = By.cssSelector(".opbox-listing-sort select");
-    private final static By selectorNoSponsoredPriceText = By.xpath("//article[not(@data-analytics-view-label='showSponsoredItems')]//*[@class='fee8042']");
-    private final static By selectorNoSponsoredDiskCapacityText = By.xpath("//article[not(@data-analytics-view-label='showSponsoredItems')]//*[span[contains(text(),'GB')]]");
+    private final static By selectorNoSponsoredPriceText = By.xpath("//article[not(@data-analytics-view-label" +
+            "='showSponsoredItems')]//*[@class='fee8042']");
+    private final static By selectorNoSponsoredDiskCapacityText = By.xpath("//article[not(@data-analytics-view-label" +
+            "='showSponsoredItems')]//*[span[contains(text(),'GB')]]");
     private final static By selectorLoadingSpinner = By.cssSelector(".bef635e");
     private final static By selectorSechResultItems = By.cssSelector("article[data-item='true']");
 
@@ -40,13 +42,13 @@ public class AllegroSearchResults extends BasePage {
         waitForElementToDisappearNoException(selectorLoadingSpinner);
     }
 
-    public boolean isFilterSortowanieDisplayed(){
+    public boolean isFilterSortowanieDisplayed() {
         logger().info("Checking if Filter 'Sortowanie' is displayed");
         waitForElementToAppearNoException(selectorFilterSortowanieBox);
         return getDriver().findElement(selectorFilterSortowanieBox).isDisplayed();
     }
 
-    public void selectOptionFromSortowanieDropdown(String optionToSelect){
+    public void selectOptionFromSortowanieDropdown(String optionToSelect) {
         logger().info("Selecting option with '" + optionToSelect + "' value from 'Sortowanie' dropdown");
         waitForElementToBeClickable(selectorFilterSortowanieDropdown);
         Select dropdownSelect = new Select(getDriver().findElement(selectorFilterSortowanieDropdown));
@@ -54,40 +56,40 @@ public class AllegroSearchResults extends BasePage {
         load();
     }
 
-    public ArrayList<String> getSearchResultsPricesTexts(){
+    public ArrayList<String> getSearchResultsPricesTexts() {
         logger().info("Getting prices displayed in search results list...");
         ArrayList<String> searchResultsPricesTexts = new ArrayList<>();
-        for(WebElement element: getPricesWebElements()){
+        for (WebElement element : getPricesWebElements()) {
             searchResultsPricesTexts.add(element.getText());
         }
         logger().info("Logging found elements: " + searchResultsPricesTexts);
         return searchResultsPricesTexts;
     }
 
-    private List<WebElement> getPricesWebElements(){
+    private List<WebElement> getPricesWebElements() {
         waitForElementToAppear(selectorNoSponsoredPriceText);
         return getDriver().findElements(selectorNoSponsoredPriceText);
     }
 
-    public ArrayList<String> getSearchResultsDiskCapacityTexts(){
+    public ArrayList<String> getSearchResultsDiskCapacityTexts() {
         logger().info("Getting discs capacities displayed in search results list...");
         ArrayList<String> searchResultsDiskCapacityTexts = new ArrayList<>();
-        for(WebElement element: getDiscCapacityWebElements()){
+        for (WebElement element : getDiscCapacityWebElements()) {
             searchResultsDiskCapacityTexts.add(element.getText());
         }
         logger().info("Logging found elements: " + searchResultsDiskCapacityTexts);
         return searchResultsDiskCapacityTexts;
     }
 
-    private List<WebElement> getDiscCapacityWebElements(){
+    private List<WebElement> getDiscCapacityWebElements() {
         waitForElementToAppear(selectorNoSponsoredDiskCapacityText);
         return getDriver().findElements(selectorNoSponsoredDiskCapacityText);
     }
 
-    public boolean isAnyResultDisplayed(){
+    public boolean isAnyResultDisplayed() {
         logger().info("Checking if there are items in search result...");
         waitForElementToAppearNoException(selectorSechResultItems);
-        if (!getDriver().findElements(selectorSechResultItems).isEmpty()){
+        if (!getDriver().findElements(selectorSechResultItems).isEmpty()) {
             logger().info("Items found");
             return true;
         } else {

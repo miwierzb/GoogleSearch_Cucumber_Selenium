@@ -5,6 +5,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Objects;
+
 import static com.assignment.core.CustomLogger.logger;
 import static com.assignment.core.WebDriverInitializer.getDriver;
 
@@ -29,7 +31,7 @@ public abstract class BasePage implements IBasePage {
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (NoSuchElementException
                 | StaleElementReferenceException
-                | TimeoutException ex){
+                | TimeoutException ex) {
             logger().error("Element not found!");
         }
     }
@@ -40,7 +42,7 @@ public abstract class BasePage implements IBasePage {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
         } catch (NoSuchElementException
                 | StaleElementReferenceException
-                | TimeoutException ex){
+                | TimeoutException ex) {
             logger().error("Element not found or still visible!");
         }
     }
@@ -67,7 +69,9 @@ public abstract class BasePage implements IBasePage {
 
     protected void waitForPageToLoad() {
         logger().debug("Waiting for page to load");
-        ExpectedCondition<Boolean> pageLoadCondition = driver -> ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+        ExpectedCondition<Boolean> pageLoadCondition =
+                driver -> ((JavascriptExecutor) Objects.requireNonNull(driver)).executeScript("return document" +
+                        ".readyState").equals("complete");
         WebDriverWait wait = new WebDriverWait(getDriver(), 30);
         wait.until(pageLoadCondition);
     }

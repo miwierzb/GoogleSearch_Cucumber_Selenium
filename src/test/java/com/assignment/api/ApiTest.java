@@ -26,44 +26,43 @@ public class ApiTest {
     private static final String FILTER_TEXT = getProperty("api.filter.text");
 
     @BeforeClass
-    public static void setUp(){
+    public static void setUp() {
         LogManager.getRootLogger().setLevel(Level.INFO);
     }
 
     @Test
-    public void getCommentsVerifyStatusCodeNumberOfCommentsAndChosenEmailPresence()
-    {
+    public void getCommentsVerifyStatusCodeNumberOfCommentsAndChosenEmailPresence() {
         given().
                 baseUri(BASE_URL).
                 log().all().
-        when().
+                when().
                 get(ENDPOINT).
-        then().
+                then().
                 log().all().
                 statusCode(SC_OK).
-        and().
+                and().
                 body("", hasSize(greaterThan(ZERO_SIZE))).
-        and().
+                and().
                 body("email", hasItem(EMAIL));
     }
 
     @Test
     public void getCommentsVerifyIsFilteredByPostIdAndTextContent() {
         List<Comments> comments = filterByPostIdAndTextContent(FILTER_POST_ID, FILTER_TEXT);
-        for (Comments comment : comments){
+        for (Comments comment : comments) {
             Assert.assertEquals("PostId is different than " + FILTER_POST_ID, FILTER_POST_ID, comment.getPostId());
-            Assert.assertTrue("Body does not contain '" + FILTER_TEXT + "' text", comment.getBody().contains(FILTER_TEXT));
+            Assert.assertTrue("Body does not contain '" + FILTER_TEXT + "' text",
+                    comment.getBody().contains(FILTER_TEXT));
         }
     }
 
-    private List<Comments> filterByPostIdAndTextContent(int postId, String searchedText)
-    {
+    private List<Comments> filterByPostIdAndTextContent(int postId, String searchedText) {
         Comments[] commentsTab = given().get("https://jsonplaceholder.typicode.com/comments").as(Comments[].class);
         List<Comments> comments = new ArrayList<>(Arrays.asList(commentsTab));
         System.out.println("Number of comments BEFORE filtering: " + comments.size());
-        for (Iterator<Comments> iterator = comments.iterator(); iterator.hasNext();) {
+        for (Iterator<Comments> iterator = comments.iterator(); iterator.hasNext(); ) {
             Comments comment = iterator.next();
-            if (comment.getPostId() != postId || !comment.getBody().contains(searchedText)){
+            if (comment.getPostId() != postId || !comment.getBody().contains(searchedText)) {
                 iterator.remove();
             }
         }
