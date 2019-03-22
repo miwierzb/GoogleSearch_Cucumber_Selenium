@@ -95,6 +95,17 @@
                         <testTarget>${java.compiler.version}</testTarget>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M3</version>
+                    <configuration>
+                        <includes>
+
+                            <include>%regex[.*Test.*]</include>
+                        </includes>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
