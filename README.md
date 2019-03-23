@@ -110,6 +110,7 @@ More information about logger levels avaliable in log4j documentation.
 ***5. RUNNING TESTS***
 
 **JUnit tests**
+
 *FROM IntelliJ:*
 
 - to run chosen test class:
@@ -142,7 +143,9 @@ mvn test -Dtest=testClassName#testMethodName
 In case of test failure, screenshot can be found in project main folder
 
 **Cucumber tests**
+
 *FROM IntelliJ:*
+
 - to run chosen type of scenarios API/Selenium:
 
 Use CucumberTestRunner classes located in ./src/test/java/com/assignment/cucumberTests directory.
@@ -206,6 +209,7 @@ Report with screenshot (for failed scenario) will be generated in target/Cucumbe
 
 ## Authors and acknowledgment
 Created by Michal Wierzbicki 12.2018
+
 Updated by Michal Wierzbicki 03.2019
 
 ## Project status
