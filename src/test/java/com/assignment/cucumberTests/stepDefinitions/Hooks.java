@@ -1,5 +1,7 @@
 package com.assignment.cucumberTests.stepDefinitions;
 
+import com.assignment.core.SharedTestData;
+import com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.AllegroStepData;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -14,8 +16,19 @@ import static com.assignment.core.WebDriverInitializer.setUpDriver;
 
 public class Hooks {
 
+    private AllegroStepData allegroStepData;
+
+    public Hooks(AllegroStepData allegroStepData) {
+        this.allegroStepData = allegroStepData;
+    }
+
+    @Before
+    public void beforeClass() {
+        allegroStepData.sharedTestData = new SharedTestData();
+    }
+
     @Before("@API")
-    public static void beforeClassAPI() {
+    public void beforeClassAPI() {
         LogManager.getRootLogger().setLevel(Level.INFO);
     }
 

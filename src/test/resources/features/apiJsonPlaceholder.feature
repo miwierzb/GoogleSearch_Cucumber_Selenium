@@ -1,4 +1,5 @@
 @API
+@JonPlaceholder
 Feature: apiJSONPlaceholder
 
   Scenario: User calls webservice and gets chosen email in response
