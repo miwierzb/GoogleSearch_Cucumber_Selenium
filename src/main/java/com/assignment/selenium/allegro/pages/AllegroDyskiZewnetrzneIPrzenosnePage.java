@@ -32,14 +32,12 @@ public class AllegroDyskiZewnetrzneIPrzenosnePage extends BasePage {
 
     public boolean isDyskiZewnetrzneIPrzenosneTextDisplayed() {
         logger().info("Checking if 'Dyski zewnętrzne i przenośne' text is displayed");
-        waitForElementToAppearNoException(selectorDyskiZewnetrzneIPrzenosneText);
-        return getDriver().findElement(selectorDyskiZewnetrzneIPrzenosneText).isDisplayed();
+        return isElementDisplayed(selectorDyskiZewnetrzneIPrzenosneText);
     }
 
     public boolean isDyskiZewnetrzneIPrzenosneBreadcrumbDisplayed() {
         logger().info("Checking if 'Dyski zewnętrzne i przenośne' breadcrumb is displayed");
-        waitForElementToAppearNoException(selectorDyskiZewnetrzneIPrzenosneBreadcrumb);
-        return getDriver().findElement(selectorDyskiZewnetrzneIPrzenosneBreadcrumb).isDisplayed();
+        return isElementDisplayed(selectorDyskiZewnetrzneIPrzenosneBreadcrumb);
     }
 
 }

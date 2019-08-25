@@ -3,6 +3,7 @@ package com.assignment.selenium;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Objects;
@@ -57,11 +58,13 @@ public abstract class BasePage implements IBasePage {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    @Deprecated
     protected void waitForTextToDisappear(By locator, String text) {
         logger().debug("Waiting for " + text + " element to disappear");
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(locator, text)));
     }
 
+    @Deprecated
     protected void waitForTextToAppear(By locator, String text) {
         logger().debug("Waiting for " + text + " element to appear");
         wait.until(ExpectedConditions.textToBe(locator, text));
@@ -74,6 +77,28 @@ public abstract class BasePage implements IBasePage {
                         ".readyState").equals("complete");
         WebDriverWait wait = new WebDriverWait(getDriver(), 30);
         wait.until(pageLoadCondition);
+    }
+
+    protected void click(By locator) {
+        waitForElementToBeClickable(locator);
+        getDriver().findElement(locator).click();
+    }
+
+    protected boolean isElementDisplayed(By locator) {
+        waitForElementToAppearNoException(locator);
+        return getDriver().findElement(locator).isDisplayed();
+    }
+
+    protected void selectOptionFromDropdownByValue(String optionToSelect, By locatorDropdown) {
+        waitForElementToBeClickable(locatorDropdown);
+        Select dropdownSelect = new Select(getDriver().findElement(locatorDropdown));
+        dropdownSelect.selectByValue(optionToSelect);
+    }
+
+    protected void enterTextToTextField(String text, By locatorTextField) {
+        waitForElementToBeClickable(locatorTextField);
+        WebElement fromTextBox = getDriver().findElement(locatorTextField);
+        fromTextBox.sendKeys(text);
     }
 
 }

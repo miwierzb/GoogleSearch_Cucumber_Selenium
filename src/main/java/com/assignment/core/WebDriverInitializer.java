@@ -2,6 +2,7 @@ package com.assignment.core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
@@ -19,6 +20,8 @@ public class WebDriverInitializer {
         logger().debug("Creating new " + WEB_DRIVER + " instance");
         switch (WEB_DRIVER) {
             case "chrome":
+                //ChromeOptions chromeOptions =  new ChromeOptions();
+                //chromeOptions.setHeadless(true);
                 wb_driver = new ChromeDriver();
                 break;
             case "gecko":

@@ -44,15 +44,12 @@ public class AllegroSearchResults extends BasePage {
 
     public boolean isFilterSortowanieDisplayed() {
         logger().info("Checking if Filter 'Sortowanie' is displayed");
-        waitForElementToAppearNoException(selectorFilterSortowanieBox);
-        return getDriver().findElement(selectorFilterSortowanieBox).isDisplayed();
+        return isElementDisplayed(selectorFilterSortowanieBox);
     }
 
     public void selectOptionFromSortowanieDropdown(String optionToSelect) {
         logger().info("Selecting option with '" + optionToSelect + "' value from 'Sortowanie' dropdown");
-        waitForElementToBeClickable(selectorFilterSortowanieDropdown);
-        Select dropdownSelect = new Select(getDriver().findElement(selectorFilterSortowanieDropdown));
-        dropdownSelect.selectByValue(optionToSelect);
+        selectOptionFromDropdownByValue(optionToSelect, selectorFilterSortowanieDropdown);
         load();
     }
 

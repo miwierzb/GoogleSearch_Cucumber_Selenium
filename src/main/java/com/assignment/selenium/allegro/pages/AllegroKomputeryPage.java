@@ -33,20 +33,17 @@ public class AllegroKomputeryPage extends BasePage {
 
     public boolean isKomputeryTextDisplayed() {
         logger().info("Checking if 'Komputery' text is displayed");
-        waitForElementToAppearNoException(selectorKomputeryText);
-        return getDriver().findElement(selectorKomputeryText).isDisplayed();
+        return isElementDisplayed(selectorKomputeryText);
     }
 
     public boolean isKomputeryBreadcrumbDisplayed() {
         logger().info("Checking if 'Komputery' breadcrumb is displayed");
-        waitForElementToAppearNoException(selectorKomputeryBreadcrumb);
-        return getDriver().findElement(selectorKomputeryBreadcrumb).isDisplayed();
+        return isElementDisplayed(selectorKomputeryBreadcrumb);
     }
 
     public AllegroDyskiIPamieciPrzenosnePage clickDyskiIPamieciPrzenosneButton() {
         logger().info("Clicking 'Dyski i pamieci przenosne' button");
-        waitForElementToBeClickable(selectorDyskiIPamieciPrzenosneButton);
-        getDriver().findElement(selectorDyskiIPamieciPrzenosneButton).click();
+        click(selectorDyskiIPamieciPrzenosneButton);
         return new AllegroDyskiIPamieciPrzenosnePage();
     }
 

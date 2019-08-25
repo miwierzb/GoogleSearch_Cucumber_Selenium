@@ -39,23 +39,18 @@ public class AllegroSearchFilters extends BasePage {
 
     public boolean isFilterPojemnoscDyskuDisplyed() {
         logger().info("Checking if filter 'Pojemnosc dysku' is displayed");
-        waitForElementToAppearNoException(selectorFilterPojemnoscDyskuText);
-        return getDriver().findElement(selectorFilterPojemnoscDyskuText).isDisplayed();
+        return isElementDisplayed(selectorFilterPojemnoscDyskuText);
     }
 
     public void enterFilterPojemnoscDyskuFromText(String from) {
         logger().info("Entering " + from + " in 'Pojemnosc dysku' FROM textbox");
-        waitForElementToBeClickable(selectorFilterPojemnoscDyskuFromTextBox);
-        WebElement fromTextBox = getDriver().findElement(selectorFilterPojemnoscDyskuFromTextBox);
-        fromTextBox.sendKeys(from);
+        enterTextToTextField(from, selectorFilterPojemnoscDyskuFromTextBox);
         waitForPageToLoad();
     }
 
     public void enterFilterPojemnoscDyskuToText(String to) {
         logger().info("Entering " + to + " in 'Pojemnosc dysku' TO textbox");
-        waitForElementToBeClickable(selectorFilterPojemnoscDyskuToTextBox);
-        WebElement fromTextBox = getDriver().findElement(selectorFilterPojemnoscDyskuToTextBox);
-        fromTextBox.sendKeys(to);
+        enterTextToTextField(to, selectorFilterPojemnoscDyskuToTextBox);
         waitForPageToLoad();
     }
 
