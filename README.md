@@ -209,8 +209,8 @@ Report with screenshot (for failed scenario) will be generated in target/Cucumbe
 
 ## Authors and acknowledgment
 Created by Michal Wierzbicki 12.2018
-
 Updated by Michal Wierzbicki 03.2019
+Updated by Michal Wierzbicki 08.2019
 
 ## Project status
 Project will be continued in future.
