@@ -33,20 +33,17 @@ public class AllegroDyskiIPamieciPrzenosnePage extends BasePage {
 
     public boolean isDyskiIPamieciPrzenosneTextDisplayed() {
         logger().info("Checking if 'Dyski i pamieci przenosne' text is displayed");
-        waitForElementToAppearNoException(selectorDyskiIPamieciPrzenosneText);
-        return getDriver().findElement(selectorDyskiIPamieciPrzenosneText).isDisplayed();
+        return isElementDisplayed(selectorDyskiIPamieciPrzenosneText);
     }
 
     public boolean isDyskiIPamieciPrzenosneBreadcrumbDisplayed() {
         logger().info("Checking if 'Dyski i pamieci przenosne' breadcrumb is displayed");
-        waitForElementToAppearNoException(selectorDyskiIPamieciPrzenosneBreadcrumb);
-        return getDriver().findElement(selectorDyskiIPamieciPrzenosneBreadcrumb).isDisplayed();
+        return isElementDisplayed(selectorDyskiIPamieciPrzenosneBreadcrumb);
     }
 
     public AllegroDyskiZewnetrzneIPrzenosnePage clickDyskiZewnetrzneIPrzenosneButton() {
         logger().info("Clicking 'Dyski zewnetrzne i przenosne' button");
-        waitForElementToBeClickable(selectorDyskiZewnetrzneIPrzenosneButton);
-        getDriver().findElement(selectorDyskiZewnetrzneIPrzenosneButton).click();
+        click(selectorDyskiZewnetrzneIPrzenosneButton);
         return new AllegroDyskiZewnetrzneIPrzenosnePage();
     }
 

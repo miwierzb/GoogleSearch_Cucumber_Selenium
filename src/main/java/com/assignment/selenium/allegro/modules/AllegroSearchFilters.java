@@ -39,8 +39,7 @@ public class AllegroSearchFilters extends BasePage {
 
     public boolean isFilterPojemnoscDyskuDisplyed() {
         logger().info("Checking if filter 'Pojemnosc dysku' is displayed");
-        waitForElementToAppearNoException(selectorFilterPojemnoscDyskuText);
-        return getDriver().findElement(selectorFilterPojemnoscDyskuText).isDisplayed();
+        return isElementDisplayed(selectorFilterPojemnoscDyskuText);
     }
 
     public void enterFilterPojemnoscDyskuFromText(String from) {

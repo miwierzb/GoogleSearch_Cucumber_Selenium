@@ -44,8 +44,7 @@ public class AllegroSearchResults extends BasePage {
 
     public boolean isFilterSortowanieDisplayed() {
         logger().info("Checking if Filter 'Sortowanie' is displayed");
-        waitForElementToAppearNoException(selectorFilterSortowanieBox);
-        return getDriver().findElement(selectorFilterSortowanieBox).isDisplayed();
+        return isElementDisplayed(selectorFilterSortowanieBox);
     }
 
     public void selectOptionFromSortowanieDropdown(String optionToSelect) {

@@ -33,20 +33,17 @@ public class AllegroElektronikaPage extends BasePage {
 
     public boolean isElektronikaTextDisplayed() {
         logger().info("Checking if 'Elektronika' text is displayed");
-        waitForElementToAppearNoException(selectorElektronikaText);
-        return getDriver().findElement(selectorElektronikaText).isDisplayed();
+        return isElementDisplayed(selectorElektronikaText);
     }
 
     public boolean isCategoriesLayoutFrameDisplayed() {
         logger().info("Checking if Categories Layout is displayed");
-        waitForElementToAppearNoException(selectorCategoriesLayoutFrame);
-        return getDriver().findElement(selectorCategoriesLayoutFrame).isDisplayed();
+        return isElementDisplayed(selectorCategoriesLayoutFrame);
     }
 
     public AllegroKomputeryPage clickKomputeryButton() {
         logger().info("Clicking 'Komputery' button");
-        waitForElementToBeClickable(selectorKomputeryButton);
-        getDriver().findElement(selectorKomputeryButton).click();
+        click(selectorKomputeryButton);
         return new AllegroKomputeryPage();
     }
 

@@ -76,4 +76,15 @@ public abstract class BasePage implements IBasePage {
         wait.until(pageLoadCondition);
     }
 
+    protected void click(By locator) {
+        waitForElementToBeClickable(locator);
+        getDriver().findElement(locator).click();
+    }
+
+    protected boolean isElementDisplayed(By locator) {
+        waitForElementToAppearNoException(locator);
+        return getDriver().findElement(locator).isDisplayed();
+    }
+
+
 }
