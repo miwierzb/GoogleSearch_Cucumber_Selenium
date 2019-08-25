@@ -49,9 +49,7 @@ public class AllegroSearchResults extends BasePage {
 
     public void selectOptionFromSortowanieDropdown(String optionToSelect) {
         logger().info("Selecting option with '" + optionToSelect + "' value from 'Sortowanie' dropdown");
-        waitForElementToBeClickable(selectorFilterSortowanieDropdown);
-        Select dropdownSelect = new Select(getDriver().findElement(selectorFilterSortowanieDropdown));
-        dropdownSelect.selectByValue(optionToSelect);
+        selectOptionFromDropdownByValue(optionToSelect, selectorFilterSortowanieDropdown);
         load();
     }
 
