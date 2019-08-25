@@ -1,11 +1,9 @@
 package com.assignment.core;
 
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import static com.assignment.core.CustomLogger.logger;
@@ -27,8 +25,6 @@ public class WebDriverInitializer {
                 wb_driver = new ChromeDriver();
                 break;
             case "gecko":
-                //FirefoxOptions firefoxOptions =  new FirefoxOptions();
-                //firefoxOptions.setHeadless(true);
                 wb_driver = new FirefoxDriver();
                 break;
             case "default":
