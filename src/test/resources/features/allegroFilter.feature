@@ -31,10 +31,10 @@ Feature: allegroSearch
     Examples:
       | filterFrom | filterTo | option           |
       | 500        | 1000     | price_descending |
-      | 200        | 500      | price_ascending  |
+      | 100        | 500      | price_ascending  |
 
   #Scenario below is written in a more 'technical' way where from business point of view all actions and validations
-  # are important and we want to show this in test scenario.
+  #are important and we want to show this in test scenario.
   #Most of the steps in this case contains singe actions, all validations are separated from actions.
   Scenario Outline: Custom search results with filters <filterFrom> gb to <filterTo> gb and price descending for 'Dyski zewnetrzne i przenosne' - long
 
@@ -62,4 +62,4 @@ Feature: allegroSearch
     Examples:
       | filterFrom | filterTo | option           |
       | 500        | 1000     | price_descending |
-      | 200        | 500      | price_ascending  |
+      | 100        | 500      | price_ascending  |

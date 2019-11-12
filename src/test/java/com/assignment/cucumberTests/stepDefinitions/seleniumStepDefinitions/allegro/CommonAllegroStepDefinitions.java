@@ -20,14 +20,15 @@ public class CommonAllegroStepDefinitions {
     @And("^I navigate to 'Dyski zewnetrzne i przenosne' page$")
     public void navigateToDyskiZewnetrzneIPrzenosnePage() {
         logger().info("STEP: I navigate to 'Dyski zewnetrzne i przenosne' page");
-        allegroStepData.allegroElektronikaPage = allegroStepData.allegroHomePage.clickElektronikaButton();
-        Assert.assertTrue("'Elektronika' page is not loaded - wrong url",
-                allegroStepData.allegroElektronikaPage.isLoaded());
-        Assert.assertTrue("'Elektronika' text is not displayed",
-                allegroStepData.allegroElektronikaPage.isElektronikaTextDisplayed());
-        Assert.assertTrue("Categories Layout is not displayed",
-                allegroStepData.allegroElektronikaPage.isCategoriesLayoutFrameDisplayed());
-        allegroStepData.allegroKomputeryPage = allegroStepData.allegroElektronikaPage.clickKomputeryButton();
+//        allegroStepData.allegroElektronikaPage = allegroStepData.allegroHomePage.clickElektronikaButton();
+//        Assert.assertTrue("'Elektronika' page is not loaded - wrong url",
+//                allegroStepData.allegroElektronikaPage.isLoaded());
+//        Assert.assertTrue("'Elektronika' text is not displayed",
+//                allegroStepData.allegroElektronikaPage.isElektronikaTextDisplayed());
+//        Assert.assertTrue("Categories Layout is not displayed",
+//                allegroStepData.allegroElektronikaPage.isCategoriesLayoutFrameDisplayed());
+        allegroStepData.allegroKomputeryPage = allegroStepData.allegroHomePage.hoverOverElektronikaAndClickKomputeryButton();
+        //allegroStepData.allegroKomputeryPage = allegroStepData.allegroElektronikaPage.clickKomputeryButton();
         Assert.assertTrue("'Komputery' page is not loaded - wrong url",
                 allegroStepData.allegroKomputeryPage.isLoaded());
         Assert.assertTrue("'Komputery' text is not displayed",
@@ -61,11 +62,13 @@ public class CommonAllegroStepDefinitions {
                 allegroStepData.allegroSearchFilters.isFilterPojemnoscDyskuDisplyed());
         allegroStepData.allegroSearchFilters.enterFilterPojemnoscDyskuFromText(filterFrom);
         allegroStepData.allegroSearchFilters.enterFilterPojemnoscDyskuToText(filterTo);
-        logger().info("Verifying if filter: " + "od " + filterFrom + " GB" + " is applied");
-        Assert.assertEquals("Filter '" + "od " + filterFrom + " GB" + "' is not applied", "od " + filterFrom + " GB",
+        logger().info("Verifying if filter: " + "Pojemność dysku: od " + filterFrom + " GB" + " is applied");
+        Assert.assertEquals("Filter '" + "Pojemność dysku: od " + filterFrom + " GB" + "' is not applied",
+                "Pojemność dysku: od " + filterFrom + " GB",
                 allegroStepData.allegroSearchFilters.getChosenAppliedFiltersText(0));
-        logger().info("Verifying if filter: " + "do " + filterTo + " GB" + " is applied");
-        Assert.assertEquals("Filter '" + "do " + filterTo + " GB" + "' is not applied", "do " + filterTo + " GB",
+        logger().info("Verifying if filter: " + "Pojemność dysku: do " + filterTo + " GB" + " is applied");
+        Assert.assertEquals("Filter '" + "Pojemność dysku: do " + filterTo + " GB" + "' is not applied",
+                "Pojemność dysku: do " + filterTo + " GB",
                 allegroStepData.allegroSearchFilters.getChosenAppliedFiltersText(1));
         allegroStepData.allegroSearchResults = new AllegroSearchResults();
         Assert.assertTrue("'Search Results' Module is not loaded", allegroStepData.allegroSearchResults.isLoaded());

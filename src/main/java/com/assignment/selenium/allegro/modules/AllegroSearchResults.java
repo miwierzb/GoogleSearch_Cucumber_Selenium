@@ -3,7 +3,6 @@ package com.assignment.selenium.allegro.modules;
 import com.assignment.selenium.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +13,14 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 public class AllegroSearchResults extends BasePage {
 
     private final static By selectorSearchModule = By.cssSelector("[data-box-name='items container']");
-    private final static By selectorFilterSortowanieBox = By.cssSelector(".opbox-listing-sort");
-    private final static By selectorFilterSortowanieDropdown = By.cssSelector(".opbox-listing-sort select");
+    private final static By selectorFilterSortowanieBox = By.cssSelector("[data-box-name='sorting']");
+    private final static By selectorFilterSortowanieDropdown = By.cssSelector("[data-box-name='sorting'] select");
     private final static By selectorNoSponsoredPriceText = By.xpath("//article[not(@data-analytics-view-label" +
             "='showSponsoredItems')]//*[@class='fee8042']");
     private final static By selectorNoSponsoredDiskCapacityText = By.xpath("//article[not(@data-analytics-view-label" +
-            "='showSponsoredItems')]//*[span[contains(text(),'GB')]]");
-    private final static By selectorLoadingSpinner = By.cssSelector(".bef635e");
-    private final static By selectorSechResultItems = By.cssSelector("article[data-item='true']");
+            "='showSponsoredItems')]//*[dd]/*[contains(text(),'GB')]");
+    private final static By selectorLoadingSpinner = By.cssSelector(".a81d4a1");
+    private final static By selectorSearchResultItems = By.cssSelector("article[data-item='true']");
 
     @Override
     public boolean isLoaded() {
@@ -85,8 +84,8 @@ public class AllegroSearchResults extends BasePage {
 
     public boolean isAnyResultDisplayed() {
         logger().info("Checking if there are items in search result...");
-        waitForElementToAppearNoException(selectorSechResultItems);
-        if (!getDriver().findElements(selectorSechResultItems).isEmpty()) {
+        waitForElementToAppearNoException(selectorSearchResultItems);
+        if (!getDriver().findElements(selectorSearchResultItems).isEmpty()) {
             logger().info("Items found");
             return true;
         } else {
