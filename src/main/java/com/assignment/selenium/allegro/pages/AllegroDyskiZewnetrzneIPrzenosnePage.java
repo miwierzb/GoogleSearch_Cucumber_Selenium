@@ -8,7 +8,7 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 
 public class AllegroDyskiZewnetrzneIPrzenosnePage extends BasePage {
 
-    private final static By selectorDyskiZewnetrzneIPrzenosneText = By.xpath("//span[@class='listing-title__category' and text()='Dyski zewnętrzne i przenośne']");
+    private final static By selectorDyskiZewnetrzneIPrzenosneText = By.xpath("//div[@data-box-name='Listing title']//*[text()='Dyski zewnętrzne i przenośne']");
     private final static By selectorDyskiZewnetrzneIPrzenosneBreadcrumb = By.xpath("//div[@data-role='breadcrumb-item']//*[@itemprop='name' and text()='Dyski zewnętrzne i przenośne']");
     private final static String url = "https://allegro.pl/kategoria/dyski-i-pamieci-przenosne-dyski-zewnetrzne-i-przenosne";
 

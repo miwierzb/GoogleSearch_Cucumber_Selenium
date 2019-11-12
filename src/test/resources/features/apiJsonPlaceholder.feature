@@ -10,7 +10,7 @@ Feature: apiJSONPlaceholder
     And   Response contains the following fields
       | email | Jayne_Kuhic@sydney.com |
 
-  Scenario Outline: User is able to get filtered response
+  Scenario Outline: User is able to get filtered response for <postId> and <text>
     Given Webservice is up and running
     When  GET call is performed on /comments endpoint
     Then  Response is received with status code 200

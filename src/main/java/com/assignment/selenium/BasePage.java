@@ -13,8 +13,8 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 
 public abstract class BasePage implements IBasePage {
 
-    private static final int TIMEOUT = 5;
-    private static final int POLLING = 100;
+    private static final int TIMEOUT = 10;
+    private static final int POLLING = 500;
     private WebDriverWait wait;
 
     public BasePage() {

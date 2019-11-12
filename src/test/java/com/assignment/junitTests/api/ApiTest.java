@@ -61,12 +61,7 @@ public class ApiTest {
         Comments[] commentsTab = given().get("https://jsonplaceholder.typicode.com/comments").as(Comments[].class);
         List<Comments> comments = new ArrayList<>(Arrays.asList(commentsTab));
         System.out.println("Number of comments BEFORE filtering: " + comments.size());
-        for (Iterator<Comments> iterator = comments.iterator(); iterator.hasNext(); ) {
-            Comments comment = iterator.next();
-            if (comment.getPostId() != postId || !comment.getBody().contains(searchedText)) {
-                iterator.remove();
-            }
-        }
+        comments.removeIf(comment -> comment.getPostId() != postId || !comment.getBody().contains(searchedText));
         System.out.println("Number of comments AFTER filtering: " + comments.size());
         System.out.println(comments.toString());
         return comments;

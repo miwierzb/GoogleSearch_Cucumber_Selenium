@@ -8,9 +8,9 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 
 public class AllegroElektronikaPage extends BasePage {
 
-    private final static By selectorElektronikaText = By.xpath("//h1[text()='Elektronika ']");
+    private final static By selectorElektronikaText = By.xpath("//h1[text()='ELEKTRONIKA ']");
     private final static By selectorCategoriesLayoutFrame = By.cssSelector("[data-box-name='drzewo kategorii - trafność']");
-    private final static By selectorKomputeryButton = By.cssSelector("[data-box-name='Nagłówek kategorii Komputery i tablety'] [href='/kategoria/komputery?order=m']");
+    private final static By selectorKomputeryButton = By.cssSelector("[title='Komputery'][target]");
     private final static String url = "https://allegro.pl/dzial/elektronika";
 
     @Override

@@ -41,9 +41,9 @@ public class AllegroSearchFiltersStepDefs {
     @Then("^I should see from (.+) gb to (.+) gb filter applied$")
     public void verifyIfCorrectFilterIsApplied(String filterFrom, String filterTo) {
         logger().info("STEP: I should see from " + filterFrom + " gb to " + filterTo + " gb filter applied");
-        Assert.assertEquals("Filter '" + filterFrom + "' is not applied", "od " + filterFrom + " GB",
+        Assert.assertEquals("Filter '" + filterFrom + "' is not applied", "Pojemność dysku: od " + filterFrom + " GB",
                 allegroStepData.allegroSearchFilters.getChosenAppliedFiltersText(0));
-        Assert.assertEquals("Filter '" + filterTo + "' is not applied", "do " + filterTo + " GB",
+        Assert.assertEquals("Filter '" + filterTo + "' is not applied", "Pojemność dysku: do " + filterTo + " GB",
                 allegroStepData.allegroSearchFilters.getChosenAppliedFiltersText(1));
     }
 

@@ -12,12 +12,12 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 
 public class AllegroSearchFilters extends BasePage {
 
-    private final static By selectorFiltersModule = By.cssSelector("#opbox-filters");
-    private final static By selectorFilterPojemnoscDyskuText = By.xpath("//*[@id='opbox-filters']//*[contains(text()," +
-            "'Pojemność dysku')]");
+    private final static By selectorFiltersModule = By.cssSelector("[data-box-name='filters container']");
+    private final static By selectorFilterPojemnoscDyskuText = By.xpath("//*[@data-box-name='filters container']//*[contains(text(), 'Pojemność dysku')]");
     private final static By selectorFilterPojemnoscDyskuFromTextBox = By.cssSelector("#pojemnosc-dysku-od");
     private final static By selectorFilterPojemnoscDyskuToTextBox = By.cssSelector("#pojemnosc-dysku-do");
-    private final static By selectorAppliedFilterField = By.cssSelector("li[title]");
+    //private final static By selectorAppliedFilterField = By.cssSelector("li[title]");
+    private final static By selectorAppliedFilterField = By.xpath("//*[@class='opbox-listing-chips']//*[div[text()]]");
 
     @Override
     public boolean isLoaded() {
@@ -65,7 +65,7 @@ public class AllegroSearchFilters extends BasePage {
         logger().info("Getting applied filters list...");
         ArrayList<String> appliedFiltersTexts = new ArrayList<>();
         for (WebElement element : getAppliedFiltersWebElements()) {
-            appliedFiltersTexts.add(element.getAttribute("title"));
+            appliedFiltersTexts.add(element.getText());
         }
         logger().info("Logging found elements: " + appliedFiltersTexts);
         return appliedFiltersTexts;
