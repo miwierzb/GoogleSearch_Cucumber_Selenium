@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.assignment.testExample</groupId>
-    <artifactId>testExample</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>GoogleSearchTests</artifactId>
+    <version>1.0</version>
 
     <properties>
         <java.compiler.version>1.8</java.compiler.version>
