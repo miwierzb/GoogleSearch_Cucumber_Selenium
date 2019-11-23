@@ -1,6 +1,5 @@
 package com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.allegro;
 
-import com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.AllegroStepData;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
 

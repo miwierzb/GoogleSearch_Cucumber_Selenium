@@ -1,6 +1,7 @@
 package com.assignment.selenium.google.modules;
 
 import com.assignment.selenium.BasePage;
+import com.assignment.selenium.google.pages.GoogleSearchResultsImagesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -12,68 +13,71 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 
 public class GoogleSearchResultTopMenuBar extends BasePage {
 
-    private final static By selectorFiltersModule = By.cssSelector("[data-box-name='filters container']");
-    private final static By selectorFilterPojemnoscDyskuText = By.xpath("//*[@data-box-name='filters container']//*[contains(text(), 'Pojemność dysku')]");
-    private final static By selectorFilterPojemnoscDyskuFromTextBox = By.cssSelector("#pojemnosc-dysku-od");
-    private final static By selectorFilterPojemnoscDyskuToTextBox = By.cssSelector("#pojemnosc-dysku-do");
-    //private final static By selectorAppliedFilterField = By.cssSelector("li[title]");
-    private final static By selectorAppliedFilterField = By.xpath("//*[@class='opbox-listing-chips']//*[div[text()]]");
+    private final static By selectorSearchForm = By.cssSelector("#searchform");
+    private final static By selectorSearchBoxTextField = By.cssSelector("input[title='Search']");
+    private final static By selectorMagnifierButton = By.cssSelector("button[aria-label='Google Search']");
+    private final static By selectorBookmarksBar = By.cssSelector("#hdtb-msb");
+    private final static By selectorBookmarksTabs = By.xpath("//div[@id='hdtb-msb-vis']//*[text()]");
+    private final static By selectorImagesTab = By.xpath("//div[@role='tab']//*[text()='Images']");
 
     @Override
     public boolean isLoaded() {
         load();
-        logger().info("Checking if Allegro 'Search Filters' Module is loaded");
-        if (getDriver().findElement(selectorFiltersModule).isDisplayed()) {
-            logger().info("'Search Filters' Module LOADED");
+        logger().info("Checking if Google Search Result Top Menu Bar is loaded");
+        if (getDriver().findElement(selectorSearchForm).isDisplayed()) {
+            logger().info("Google Search Result Top Menu Bar LOADED");
             return true;
         }
-        logger().info("'Search Filters' Module NOT LOADED");
+        logger().info("Google Search Result Top Menu Bar NOT LOADED");
         return false;
     }
 
     @Override
     public void load() {
-        logger().info("Loading Allegro 'Search Filters' Module...");
+        logger().info("Loading Google Search Result Top Menu Bar...");
         waitForPageToLoad();
     }
 
-    public boolean isFilterPojemnoscDyskuDisplyed() {
-        logger().info("Checking if filter 'Pojemnosc dysku' is displayed");
-        return isElementDisplayed(selectorFilterPojemnoscDyskuText);
+    public boolean isSearchFormDisplayed() {
+        logger().info("Checking if Search Form is displayed");
+        return isElementDisplayed(selectorSearchForm);
     }
 
-    public void enterFilterPojemnoscDyskuFromText(String from) {
-        logger().info("Entering " + from + " in 'Pojemnosc dysku' FROM textbox");
-        enterTextToTextField(from, selectorFilterPojemnoscDyskuFromTextBox);
-        waitForPageToLoad();
+    public boolean isBookmarksBarDisplayed() {
+        logger().info("Checking if Bookmarks Bar is displayed");
+        return isElementDisplayed(selectorBookmarksBar);
     }
 
-    public void enterFilterPojemnoscDyskuToText(String to) {
-        logger().info("Entering " + to + " in 'Pojemnosc dysku' TO textbox");
-        enterTextToTextField(to, selectorFilterPojemnoscDyskuToTextBox);
-        waitForPageToLoad();
+    public void enterSearchBoxText(String searchKeyword) {
+        logger().info("Entering " + searchKeyword + " into Search Box");
+        enterTextToTextField(searchKeyword, selectorSearchBoxTextField);
     }
 
-    public String getChosenAppliedFiltersText(int filterNumber) {
-        logger().info("Getting text from filter " + filterNumber);
-        String text = getAppliedFiltersTexts().get(filterNumber);
-        logger().info("Found text: " + text);
-        return text;
+    public void clickMagnifierButton() {
+        logger().info("Clicking 'Magnifier' button");
+        click(selectorMagnifierButton);
     }
 
-    private ArrayList<String> getAppliedFiltersTexts() {
-        logger().info("Getting applied filters list...");
-        ArrayList<String> appliedFiltersTexts = new ArrayList<>();
-        for (WebElement element : getAppliedFiltersWebElements()) {
-            appliedFiltersTexts.add(element.getText());
+    public GoogleSearchResultsImagesPage clickImagesTab() {
+        logger().info("Clicking 'Images' Tab");
+        click(selectorImagesTab);
+        return new GoogleSearchResultsImagesPage();
+    }
+
+    public ArrayList<String> getBookmarksBarTabsTexts() {
+        logger().info("Getting list of a Bookmarks Bar Tabs displayed...");
+        ArrayList<String> bookmarksBarTabsTexts = new ArrayList<>();
+        for (WebElement element : getBookmarksBarWebElements()) {
+            bookmarksBarTabsTexts.add(element.getText());
         }
-        logger().info("Logging found elements: " + appliedFiltersTexts);
-        return appliedFiltersTexts;
+        logger().info("Logging found elements: " + bookmarksBarTabsTexts);
+        return bookmarksBarTabsTexts;
     }
 
-    private List<WebElement> getAppliedFiltersWebElements() {
-        waitForElementToAppear(selectorAppliedFilterField);
-        return getDriver().findElements(selectorAppliedFilterField);
+    private List<WebElement> getBookmarksBarWebElements() {
+        waitForElementToAppear(selectorBookmarksTabs);
+        return getDriver().findElements(selectorBookmarksTabs);
     }
+
 
 }

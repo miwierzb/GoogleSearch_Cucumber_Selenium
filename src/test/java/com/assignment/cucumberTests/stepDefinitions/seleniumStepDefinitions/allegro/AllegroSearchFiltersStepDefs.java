@@ -1,6 +1,5 @@
 package com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.allegro;
 
-import com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.AllegroStepData;
 import com.assignment.selenium.allegro.modules.AllegroSearchFilters;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;

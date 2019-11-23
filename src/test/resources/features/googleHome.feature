@@ -6,10 +6,10 @@ Feature: GoogleHomePage
   Background:
     Given   I navigate to Google Home Page
 
-  Scenario: 'Gmail' link redirects to Gmail Home page
+  Scenario: 'Sign in' link redirects to Accounts Page
     Given 	I'm on Google Home Page
-    When	I click 'Gmail' button
-    Then	I should be redirected to Gmail Home Page
+    When	I click 'Sign in' button
+    Then	I should be redirected to Accounts Page
 
   Scenario: Google Home Page Footer contains correct links
     Given 	I'm on Google Home Page
@@ -26,7 +26,7 @@ Feature: GoogleHomePage
     Then	I should be redirected to Doodles Page
 
   Scenario: 'Google Search' button redirects to 'Google Search Result' Page
-    Given  I'm on Google Home Page
-    When   I enter text 'test' into search TextField
-    And    I click 'Google Search' button
-    Then   I should be redirected to Google Search Result Page
+    Given   I'm on Google Home Page
+    When    I enter text 'test' into search box
+    And     I click 'Google Search' button
+    Then    I should be redirected to Google Search Result Page
