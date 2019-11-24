@@ -7,11 +7,11 @@ import java.util.Properties;
 
 import static com.assignment.core.CustomLogger.logger;
 
-public class PropertiesManager {
+class PropertiesManager {
 
     private final static String FILE_URL = "./src/test/resources/test.data.properties";
 
-    public static String getProperty(final String property) {
+    static String getProperty(final String property) {
         Properties prop = new Properties();
 
         try (InputStream fileInputStream = new FileInputStream(FILE_URL)) {

@@ -1,8 +1,15 @@
-# CucumberTestAutomationExamples
+# Google Search Test Automation
 
 ## Description
 
-testExample project contains a simple Cucumber for Selenium and API Test Automation (RestAssured) sample framework with test examples .
+Project contains sample automated UI tests for Google Home and Google Search Result Page.
+Test Automation is based on author's own framework that can be found under [CucumberTestAutomationExamples repository](https://github.com/miwierzb/CucumberTestAutomationExamples).
+Some features like API (RestAssured) testing support were excluded from the framework as these are not needed in this project.
+To check full possibilities of the framework please go to the [CucumberTestAutomationExamples repository](https://github.com/miwierzb/CucumberTestAutomationExamples) [README file](https://github.com/miwierzb/CucumberTestAutomationExamples/blob/master/README.md).
+
+Google Search Test Automation is written using Java with Cucumber (BDD scenarios), Selenium WebDriver, AssertJ and Maven.
+
+Testing Approach - [Google Home Page and Google Search Results Approach](https://github.com/miwierzb/CucumberTestAutomationExamples/blob/master/1.GoogleTestingApproach.pdf)
 
  Note - all features were tested on Windows 32/64 bit and Chrome browser
 
@@ -10,12 +17,11 @@ testExample project contains a simple Cucumber for Selenium and API Test Automat
 - 'PropertiesManager' - test data imported from test.data.properties file
 - 'CustomLogger' - Custom Logger to stdout and file including 'WebEventListener' event custom logs based on log4j (configuration file - log4j.properties, logging to logging.log file in main project directory)
 - 'SharedTestData' - container for test data that can be used during test execution
-- 'ScreenShotOnFailure' - taking screeshot on failure for Junit tests and saving it to .png file in screenShots/ directory.
-For Cucumber tests run from CucumberTestRunners report with screenshot will be generated in target/Cucumber directory
+- 'ScreenShotOnFailure' - for Cucumber tests run from CucumberTestRunners report with screenshot will be generated in target/Cucumber directory
 - Ability to choose browser from test.data.properties file ('WebDriverInitializer' class) (package includes webdrivers for chrome and mozilla firefox)
 - Supporting POM model
 
-Set up with Cucumber + JUnit and Maven + Selenium WebDriver and Rest Assured, tests written in Java.
+Set up with Cucumber, Selenium WebDriver, AssertJ and Maven + Selenium WebDriver, tests written in Java.
 
 ## Installation
 
@@ -62,21 +68,13 @@ mvn clean install -DskipTests
 
 - All core framework classes can be found under ./src/main/java/com/assignment/core
 - All POM classes can be found under ./src/main/java/com/assignment/selenium
-- All API POJO classes can be found under ./src/main/java/com/assignment/api
-
-*Junit Test classes:*
-- All API Test classes can be found under ./src/test/java/com/assignment/junitTests/api
-- All Selenium Test classes can be found under ./src/test/java/com/assignment/junitTests/selenium
 
 *Cucumber Test Classes:*
-- All Stef Definitions classes can be found under ./src/test/java/com/assignment/cucumberTests/stepDefinitions
+- All Step Definitions classes can be found under ./src/test/java/com/assignment/cucumberTests/stepDefinitions
 - All Feature files can be found under ./src/test/resources/features
 - All TestRunners classes can be found under ./src/test/java/com/assignment/cucumberTests
 
 ***2. TEST DATA***
-
-*Junit Test data:*
-Test data can be found in ./src/test/resources/test.data.properties file.
 
 *CucumberTest data:*
 Test data can be found in feature files in ./src/test/resources/features.
@@ -109,39 +107,6 @@ More information about logger levels avaliable in log4j documentation.
 
 ***5. RUNNING TESTS***
 
-**JUnit tests**
-
-*FROM IntelliJ:*
-
-- to run chosen test class:
-
-Right click on test class you want to run and click "Run 'testClassName.class'"
-
-- to run chosen test method from test class:
-
-Right click on test methof you want to run and click "Run 'testMethodName()'" or click 'Run Test' button next to method name.
-
-*FROM cmd - maven:*
-
-- to run all tests
-
-```bash
-mvn test
-```
-NOTE: When running all tests, DEBUG logs are not displayed
-- to run chosen test class:
-
-```bash
-mvn test -Dtest=testClassName
-```
-
-- to run chosen test method from test class:
-
-```bash
-mvn test -Dtest=testClassName#testMethodName
-```
-In case of test failure, screenshot can be found in project main folder
-
 **Cucumber tests**
 
 *FROM IntelliJ:*
@@ -150,7 +115,6 @@ In case of test failure, screenshot can be found in project main folder
 
 Use CucumberTestRunner classes located in ./src/test/java/com/assignment/cucumberTests directory.
 
-CucumberTestRunnerApi.java will trigger scenarios with @API tag
 CucumberTestRunnerSelenium.java will trigger scenarios with @Selenium tag
 
 - to run scenario/scenarios with chosen tag:
@@ -213,6 +177,8 @@ Created by Michal Wierzbicki 12.2018
 Updated by Michal Wierzbicki 03.2019
 
 Updated by Michal Wierzbicki 08.2019
+
+Updated by Michal Wierzbicki 11.2019
 
 ## Project status
 Project will be continued in future.

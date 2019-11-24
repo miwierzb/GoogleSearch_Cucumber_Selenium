@@ -89,6 +89,11 @@ public abstract class BasePage implements IBasePage {
         return getDriver().findElement(locator).isDisplayed();
     }
 
+    protected String getTextFromElement(By locator) {
+        waitForElementToAppear(locator);
+        return getDriver().findElement(locator).getText();
+    }
+
     protected void selectOptionFromDropdownByValue(String optionToSelect, By locatorDropdown) {
         waitForElementToBeClickable(locatorDropdown);
         Select dropdownSelect = new Select(getDriver().findElement(locatorDropdown));
@@ -97,8 +102,9 @@ public abstract class BasePage implements IBasePage {
 
     protected void enterTextToTextField(String text, By locatorTextField) {
         waitForElementToBeClickable(locatorTextField);
-        WebElement fromTextBox = getDriver().findElement(locatorTextField);
-        fromTextBox.sendKeys(text);
+        WebElement textBox = getDriver().findElement(locatorTextField);
+        textBox.clear();
+        textBox.sendKeys(text);
     }
 
 }
