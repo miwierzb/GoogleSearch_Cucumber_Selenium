@@ -31,7 +31,7 @@ public class GoogleHomePageStepDefs {
     }
 
     @Given("^I'm on Google Home Page$")
-    public void verifyIfGoogleHomePageIsLoaded() {
+    public void verifyThatGoogleHomePageIsLoaded() {
         logger().info("BEFORE TEST STEP: I'm on Google Home Page");
         softly.assertThat(googleStepData.googleHomePage.isLoaded()).as("Google Home page is not loaded - wrong url").isTrue();
         softly.assertThat(googleStepData.googleHomePage.isGoogleHomeSearchBoxDisplayed()).as("Google Home Page Search" +
@@ -51,7 +51,7 @@ public class GoogleHomePageStepDefs {
     }
 
     @Then("^I should be redirected to Accounts Page$")
-    public void verifyIfGoogleAccountsIsLoaded() {
+    public void verifyThatGoogleAccountsIsLoaded() {
         logger().info("STEP: I should be redirected to Accounts Page");
         softly.assertThat(googleStepData.googleAccountsPage.isLoaded()).as("Google Home page is not loaded - wrong " +
                 "url").isTrue();
@@ -61,7 +61,7 @@ public class GoogleHomePageStepDefs {
     }
 
     @Then("^I should see correct Footer links$")
-    public void verifyIfGoogleHomePageFooterLinksAreCorrect(List<String> footerLinks) {
+    public void verifyThatGoogleHomePageFooterLinksAreCorrect(List<String> footerLinks) {
         logger().info("STEP: I should see correct Footer links");
         logger().info("Footer links specified in scenario: " + footerLinks);
         softly.assertThat(googleStepData.googleHomePage.isFooterDisplayed()).as("Google Home Page Footer is not " +
@@ -77,7 +77,7 @@ public class GoogleHomePageStepDefs {
     }
 
     @When("^I should be redirected to Doodles Page$")
-    public void verifyIfGoogleDoodlesPageIsLoaded() {
+    public void verifyThatGoogleDoodlesPageIsLoaded() {
         logger().info("STEP: I should be redirected to Doodles Page");
         softly.assertThat(googleStepData.googleDoodlesPage.isLoaded()).as("Google Doodles Page is not displayed").isTrue();
         softly.assertAll();
@@ -98,7 +98,7 @@ public class GoogleHomePageStepDefs {
     }
 
     @Then("^I should be redirected to Google Search Result Page$")
-    public void verifyIfGoogleSearchResultPageIsLoaded() {
+    public void verifyThatGoogleSearchResultPageIsLoaded() {
         logger().info("STEP: I should be redirected to Google Search Result Page");
         softly.assertThat(googleStepData.googleSearchResultTopMenuBar.isLoaded()).as("Google Search Result Page Top " +
                 "Menu Bar is not displayed").isTrue();
