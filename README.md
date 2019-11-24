@@ -9,7 +9,7 @@ To check full possibilities of the framework please go to the [CucumberTestAutom
 
 Google Search Test Automation is written using Java with Cucumber (BDD scenarios), Selenium WebDriver, AssertJ and Maven.
 
-Testing Approach - [Google Home Page and Google Search Results Approach](https://github.com/miwierzb/CucumberTestAutomationExamples/blob/master/1.GoogleTestingApproach.pdf)
+Testing Approach - [Google Home Page and Google Search Results Approach](https://github.com/miwierzb/GoogleSearch_Cucumber_Selenium/blob/master/1.GoogleTestingApproach.pdf)
 
  Note - all features were tested on Windows 32/64 bit and Chrome browser
 
