@@ -31,7 +31,6 @@ Feature: GoogleSearchResult
     Examples:
       | searchText  |
       | test        |
-      | search      |
       | test search |
 
   Scenario Outline: Correct search results are displayed on Google Search Result Page for '<searchText>' from Google Home Page

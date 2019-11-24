@@ -32,5 +32,15 @@ Feature: GoogleHomePage
     Then  I should be redirected to Google Search Result Page
 
     Examples:
-    | searchText |
-    | test       |
+      | searchText |
+      | test       |
+
+  Scenario Outline: Clicking 'Enter' key after entering <searchText> into SearchBox redirects to 'Google Search Result' Page
+    Given I'm on Google Home Page
+    When  I enter text '<searchText>' into search box
+    And   I click 'Enter' keyboard key
+    Then  I should be redirected to Google Search Result Page
+
+    Examples:
+      | searchText |
+      | test       |
