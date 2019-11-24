@@ -12,7 +12,7 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 
 public class GoogleSearchResultsImagesPage extends BasePage {
 
-    private final static By selectorSearchResultForm = By.cssSelector("#search");
+    private final static By selectorSearchResultForm = By.cssSelector("#center_col");
     private final static By selectorSearchResultsImages = By.cssSelector("#search img:not([data-src])");
     private final static By selectorImageSearchResultsFirstElementTitle = By.xpath("//*[@id='rg']//a[@target]/*[text()]");
 
