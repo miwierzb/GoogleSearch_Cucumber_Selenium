@@ -102,8 +102,9 @@ public abstract class BasePage implements IBasePage {
 
     protected void enterTextToTextField(String text, By locatorTextField) {
         waitForElementToBeClickable(locatorTextField);
-        WebElement fromTextBox = getDriver().findElement(locatorTextField);
-        fromTextBox.sendKeys(text);
+        WebElement textBox = getDriver().findElement(locatorTextField);
+        textBox.clear();
+        textBox.sendKeys(text);
     }
 
 }

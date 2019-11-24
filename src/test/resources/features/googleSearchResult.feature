@@ -1,6 +1,6 @@
 @Selenium
 @Google
-@GoogleSearchResult1
+@GoogleSearchResult
 Feature: GoogleSearchResult
   This feature contains tests for Google Search Result Page.
 
@@ -18,50 +18,57 @@ Feature: GoogleSearchResult
           | News   |
           | Videos |
           | Maps   |
-  @GoogleSearchResult1
-  Scenario: Clicking 'Images' bookmark on Google Search Result Page changes result 	view from all to images
-    Given I enter text 'test' into search box
+
+  Scenario Outline: Correct 'Images' search results are displayed on Image Search Result Page for '<searchText>'
+    Given I enter text '<searchText>' into search box
     And   I click 'Google Search' button
     And   I'm on Google Search Result Page
-    And   I should see correct search result for 'test'
+    And   I should see correct search result for '<searchText>'
     When  I click 'Images' bookmark
-    Then  I should see images search result for 'test'
-  @GoogleSearchResult1
-  Scenario Outline: Correct search results are displayed on Google Search Result Page for searched keyword <keyword> from Google Home Page
-    When  I enter text <keyword> into search box
-    And   I click 'Google Search' button
-    Then  I should be redirected to Google Search Result Page
-    And   I should see search result for keyword <keyword>
+    Then  I should land on Images Search Results Page
+    And   I should see images search result for '<searchText>'
 
     Examples:
-      | keyword     |
+      | searchText  |
+      | test        |
+      | search      |
+      | test search |
+
+  Scenario Outline: Correct search results are displayed on Google Search Result Page for '<searchText>' from Google Home Page
+    When  I enter text '<searchText>' into search box
+    And   I click 'Google Search' button
+    Then  I should be redirected to Google Search Result Page
+    And   I should see correct search result for '<searchText>'
+
+    Examples:
+      | searchText  |
       | test        |
       | search      |
       | test search |
       | 1234        |
-  @GoogleSearchResult1
-  Scenario Outline: Correct search results are displayed on Google Search Result Page for searched keyword <keyword> from Google Search Result Page
+
+  Scenario Outline: Correct search results are displayed on Google Search Result Page for '<searchText>' from Google Search Result Page
     Given I enter text 'test' into search box
     And   I click 'Google Search' button
     And   I should be redirected to Google Search Result Page
-    When  I enter text <keyword> into search box on Search Result Page
-    And   I click magnifier button
-    Then  I should see search result for keyword <keyword>
+    When  I enter text '<searchText>' into search box on Search Result Page
+    And   I click 'Magnifier' button
+    Then  I should see correct search result for '<searchText>'
 
     Examples:
-      | keyword     |
+      | searchText  |
       | test        |
       | search      |
       | test search |
       | 1234        |
-  @GoogleSearchResult1
-  Scenario Outline: 'Your search did not match any documents' message is displayed on Search Result Page for keyword <keyword>
-    When  I enter text <keyword> into search box
+
+  Scenario Outline: Message 'Your search did not match any documents' message is displayed for '<searchText>' search on Search Result Page
+    When  I enter text '<searchText>' into search box
     And   I click 'Google Search' button
     Then  I should be redirected to Google Search Result Page
-    And   I should see message 'Your search - <keyword> - did not match any documents'
+    And   I should see message 'Your search - <searchText> - did not match any documents'
 
     Examples:
-      | keyword     |
-      | .......     |
+      | searchText  |
+      | ++++++      |
       | =========== |

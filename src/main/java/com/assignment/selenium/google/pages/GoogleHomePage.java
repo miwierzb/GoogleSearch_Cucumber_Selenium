@@ -22,7 +22,6 @@ public class GoogleHomePage extends BasePage {
     private final static By selectorGoogleSearchDropdownButton = By.cssSelector("div[jsname] input[value='Google Search']");
     private final static By selectorImFeelingLuckyButton = By.cssSelector("div:not([jsname]) > center > input[value=\"I'm Feeling Lucky\"]");
     private final static By selectorImFeelingLuckyDropdownButton = By.cssSelector("div[jsname] input[value=\"I'm Feeling Lucky\"]");
-    private final static By selectorGmailLink = By.xpath("//a[text()='Gmail']");
     private final static By selectorSignInButton = By.xpath("//a[text()='Sign in']");
     private final static String url = "https://www.google.com/";
 
@@ -64,11 +63,6 @@ public class GoogleHomePage extends BasePage {
         return isElementDisplayed(selectorImFeelingLuckyButton);
     }
 
-    public boolean isGmailLinkDisplayed() {
-        logger().info("Checking if 'Gmail' button is displayed");
-        return isElementDisplayed(selectorGmailLink);
-    }
-
     public boolean isFooterDisplayed() {
         logger().info("Checking if Footer is displayed");
         return isElementDisplayed(selectorFooter);
@@ -84,12 +78,6 @@ public class GoogleHomePage extends BasePage {
             click(selectorGoogleSearchDropdownButton);
         }
         return new GoogleSearchResultsAllPage();
-    }
-
-    public GoogleAccountsPage clickGmailLink() {
-        logger().info("Clicking 'Gmail' link");
-        click(selectorGmailLink);
-        return new GoogleAccountsPage();
     }
 
     public GoogleAccountsPage clickSignInButton() {
@@ -110,9 +98,9 @@ public class GoogleHomePage extends BasePage {
         return new GoogleDoodlesPage();
     }
 
-    public void enterSearchBoxText(String searchKeyword) {
-        logger().info("Entering " + searchKeyword + " into Search Box");
-        enterTextToTextField(searchKeyword, selectorSearchBoxTextField);
+    public void enterSearchBoxText(String searchText) {
+        logger().info("Entering " + searchText + " into Search Box");
+        enterTextToTextField(searchText, selectorSearchBoxTextField);
     }
 
     public ArrayList<String> getFooterLinksTexts() {

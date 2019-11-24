@@ -3,7 +3,6 @@ package com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions;
 import com.assignment.core.SharedTestData;
 import com.assignment.selenium.google.modules.GoogleSearchResultTopMenuBar;
 import com.assignment.selenium.google.pages.*;
-import org.assertj.core.api.SoftAssertions;
 
 public class GoogleStepData {
     public GoogleHomePage googleHomePage;
@@ -13,5 +12,4 @@ public class GoogleStepData {
     public GoogleSearchResultsImagesPage googleSearchResultsImagesPage;
     public GoogleSearchResultTopMenuBar googleSearchResultTopMenuBar;
     public SharedTestData sharedTestData = new SharedTestData();
-    public SoftAssertions softly = new SoftAssertions();
 }

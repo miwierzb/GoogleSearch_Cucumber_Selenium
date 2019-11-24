@@ -7,9 +7,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.Assert;
 
 import java.util.List;
 
@@ -36,8 +34,13 @@ public class GoogleHomePageStepDefs {
     public void verifyIfGoogleHomePageIsLoaded() {
         logger().info("BEFORE TEST STEP: I'm on Google Home Page");
         softly.assertThat(googleStepData.googleHomePage.isLoaded()).as("Google Home page is not loaded - wrong url").isTrue();
-        softly.assertThat(googleStepData.googleHomePage.isGoogleHomeSearchBoxDisplayed()).as("Google Home Page Search Box is not displayed").isTrue();
-        softly.assertThat(googleStepData.googleHomePage.isGoogleLogoDisplayed()).as("Google Logo is not loaded").isTrue();
+        softly.assertThat(googleStepData.googleHomePage.isGoogleHomeSearchBoxDisplayed()).as("Google Home Page Search" +
+                " Box is not displayed").isTrue();
+        softly.assertThat(googleStepData.googleHomePage.isGoogleLogoDisplayed()).as("Google Logo is not displayed").isTrue();
+        softly.assertThat(googleStepData.googleHomePage.isGoogleSearchButtonDisplayed()).as("'Google Search' button " +
+                "is not displayed").isTrue();
+        softly.assertThat(googleStepData.googleHomePage.isImFeelingLuckyButtonDisplayed()).as("'I'm Feeling Lucky' " +
+                "button is not displayed").isTrue();
         softly.assertAll();
     }
 
@@ -47,17 +50,13 @@ public class GoogleHomePageStepDefs {
         googleStepData.googleAccountsPage = googleStepData.googleHomePage.clickSignInButton();
     }
 
-    @When("^I click 'Gmail' link$")
-    public void clickGmailLink() {
-        logger().info("STEP: I click 'Gmail' link");
-        googleStepData.googleAccountsPage = googleStepData.googleHomePage.clickGmailLink();
-    }
-
     @Then("^I should be redirected to Accounts Page$")
     public void verifyIfGoogleAccountsIsLoaded() {
         logger().info("STEP: I should be redirected to Accounts Page");
-        softly.assertThat(googleStepData.googleAccountsPage.isLoaded()).as("Google Home page is not loaded - wrong url").isTrue();
-        softly.assertThat(googleStepData.googleAccountsPage.isSignInHeadingTextDisplayed()).as("Google Accounts 'Sign in' heading text is not displayed").isTrue();
+        softly.assertThat(googleStepData.googleAccountsPage.isLoaded()).as("Google Home page is not loaded - wrong " +
+                "url").isTrue();
+        softly.assertThat(googleStepData.googleAccountsPage.isSignInHeadingTextDisplayed()).as("Google Accounts 'Sign" +
+                " in' heading text is not displayed").isTrue();
         softly.assertAll();
     }
 
@@ -65,7 +64,8 @@ public class GoogleHomePageStepDefs {
     public void verifyIfGoogleHomePageFooterLinksAreCorrect(List<String> footerLinks) {
         logger().info("STEP: I should see correct Footer links");
         logger().info("Footer links specified in scenario: " + footerLinks);
-        softly.assertThat(googleStepData.googleHomePage.isFooterDisplayed()).as("Google Home Page Footer is not displayed").isTrue();
+        softly.assertThat(googleStepData.googleHomePage.isFooterDisplayed()).as("Google Home Page Footer is not " +
+                "displayed").isTrue();
         softly.assertThat(googleStepData.googleHomePage.getFooterLinksTexts()).as("Footer links are not correct").isEqualTo(footerLinks);
         softly.assertAll();
     }
@@ -93,15 +93,17 @@ public class GoogleHomePageStepDefs {
     @Then("^I should be redirected to Google Search Result Page$")
     public void verifyIfGoogleSearchResultPageIsLoaded() {
         logger().info("STEP: I should be redirected to Google Search Result Page");
-        softly.assertThat(googleStepData.googleSearchResultTopMenuBar.isLoaded()).as("Google Search Result Page Top Menu Bar is not displayed").isTrue();
-        softly.assertThat(googleStepData.googleSearchResultsAllPage.isLoaded()).as("Google Search Result Page is not displayed").isTrue();
+        softly.assertThat(googleStepData.googleSearchResultTopMenuBar.isLoaded()).as("Google Search Result Page Top " +
+                "Menu Bar is not displayed").isTrue();
+        softly.assertThat(googleStepData.googleSearchResultsAllPage.isLoaded()).as("Google Search Result Page is not " +
+                "displayed").isTrue();
         softly.assertAll();
     }
 
-    @When("^I enter text (.*) into search box$")
-    public void enterTextIntoSearchBox(String keyword) {
-        logger().info("STEP: I enter text '" +keyword+ "' into search box");
-        googleStepData.googleHomePage.enterSearchBoxText(keyword);
+    @When("^I enter text \'(.*)\' into search box$")
+    public void enterTextIntoSearchBox(String searchText) {
+        logger().info("STEP: I enter text '" + searchText + "' into search box");
+        googleStepData.googleHomePage.enterSearchBoxText(searchText);
     }
 
 }

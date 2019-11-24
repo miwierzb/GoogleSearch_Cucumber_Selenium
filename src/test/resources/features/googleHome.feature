@@ -12,11 +12,6 @@ Feature: GoogleHomePage
     When  I click 'Sign in' button
     Then  I should be redirected to Accounts Page
 
-  Scenario: 'Gmail' link redirects to Accounts Page
-    Given I'm on Google Home Page
-    When  I click 'Gmail' link
-    Then  I should be redirected to Accounts Page
-
   Scenario: Google Home Page Footer contains correct links
     When  I'm on Google Home Page
     Then  I should see correct Footer links
@@ -32,11 +27,10 @@ Feature: GoogleHomePage
 
   Scenario Outline: 'Google Search' button redirects to 'Google Search Result' Page
     Given I'm on Google Home Page
-    When  I enter text <keyword> into search box
+    When  I enter text '<searchText>' into search box
     And   I click 'Google Search' button
     Then  I should be redirected to Google Search Result Page
 
     Examples:
-    | keyword |
-    | test    |
-    | search  |
+    | searchText |
+    | test       |

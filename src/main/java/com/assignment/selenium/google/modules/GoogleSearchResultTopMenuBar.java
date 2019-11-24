@@ -1,6 +1,7 @@
 package com.assignment.selenium.google.modules;
 
 import com.assignment.selenium.BasePage;
+import com.assignment.selenium.google.pages.GoogleSearchResultsAllPage;
 import com.assignment.selenium.google.pages.GoogleSearchResultsImagesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -24,7 +25,7 @@ public class GoogleSearchResultTopMenuBar extends BasePage {
     public boolean isLoaded() {
         load();
         logger().info("Checking if Google Search Result Top Menu Bar is loaded");
-        if (getDriver().findElement(selectorSearchForm).isDisplayed()) {
+        if (isSearchFormDisplayed()) {
             logger().info("Google Search Result Top Menu Bar LOADED");
             return true;
         }
@@ -38,7 +39,7 @@ public class GoogleSearchResultTopMenuBar extends BasePage {
         waitForPageToLoad();
     }
 
-    public boolean isSearchFormDisplayed() {
+    private boolean isSearchFormDisplayed() {
         logger().info("Checking if Search Form is displayed");
         return isElementDisplayed(selectorSearchForm);
     }
@@ -48,14 +49,15 @@ public class GoogleSearchResultTopMenuBar extends BasePage {
         return isElementDisplayed(selectorBookmarksBar);
     }
 
-    public void enterSearchBoxText(String searchKeyword) {
-        logger().info("Entering " + searchKeyword + " into Search Box");
-        enterTextToTextField(searchKeyword, selectorSearchBoxTextField);
+    public void enterSearchBoxText(String searchText) {
+        logger().info("Entering " + searchText + " into Search Box");
+        enterTextToTextField(searchText, selectorSearchBoxTextField);
     }
 
-    public void clickMagnifierButton() {
+    public GoogleSearchResultsAllPage clickMagnifierButton() {
         logger().info("Clicking 'Magnifier' button");
         click(selectorMagnifierButton);
+        return new GoogleSearchResultsAllPage();
     }
 
     public GoogleSearchResultsImagesPage clickImagesTab() {
