@@ -20,9 +20,10 @@ public class WebDriverInitializer {
         logger().debug("Creating new " + WEB_DRIVER + " instance");
         switch (WEB_DRIVER) {
             case "chrome":
-                //ChromeOptions chromeOptions =  new ChromeOptions();
+                ChromeOptions chromeOptions =  new ChromeOptions();
+                chromeOptions.addArguments("--lang=en-GB");
                 //chromeOptions.setHeadless(true);
-                wb_driver = new ChromeDriver();
+                wb_driver = new ChromeDriver(chromeOptions);
                 break;
             case "gecko":
                 wb_driver = new FirefoxDriver();

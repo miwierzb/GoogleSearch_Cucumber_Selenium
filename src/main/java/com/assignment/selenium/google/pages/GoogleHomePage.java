@@ -2,6 +2,7 @@ package com.assignment.selenium.google.pages;
 
 import com.assignment.selenium.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -18,9 +19,11 @@ public class GoogleHomePage extends BasePage {
     private final static By selectorFooter = By.cssSelector("#footer");
     private final static By selectorFooterLinksTexts = By.cssSelector("#fsl>a[href]");
     private final static By selectorGoogleSearchButton = By.cssSelector("div:not([jsname]) > center > input[value='Google Search']");
-    private final static By selectorImFeelingLuckyButton = By.cssSelector("div:not([jsname]) > center > input[value='I'm Feeling Lucky']");
+    private final static By selectorGoogleSearchDropdownButton = By.cssSelector("div[jsname] input[value='Google Search']");
+    private final static By selectorImFeelingLuckyButton = By.cssSelector("div:not([jsname]) > center > input[value=\"I'm Feeling Lucky\"]");
+    private final static By selectorImFeelingLuckyDropdownButton = By.cssSelector("div[jsname] input[value=\"I'm Feeling Lucky\"]");
     private final static By selectorGmailLink = By.xpath("//a[text()='Gmail']");
-    private final static By selectorSignInButton = By.cssSelector("//a[text()='Sign in']");
+    private final static By selectorSignInButton = By.xpath("//a[text()='Sign in']");
     private final static String url = "https://www.google.com/";
 
     @Override
@@ -56,24 +59,30 @@ public class GoogleHomePage extends BasePage {
         return isElementDisplayed(selectorGoogleSearchButton);
     }
 
-    public boolean isImFeelingLuckyhButtonDisplayed() {
-        logger().info("Checking if 'Google Search' button is displayed");
+    public boolean isImFeelingLuckyButtonDisplayed() {
+        logger().info("Checking if 'I'm Feeling Lucky' button is displayed");
         return isElementDisplayed(selectorImFeelingLuckyButton);
     }
 
     public boolean isGmailLinkDisplayed() {
-        logger().info("Checking if 'Google Search' button is displayed");
+        logger().info("Checking if 'Gmail' button is displayed");
         return isElementDisplayed(selectorGmailLink);
     }
 
     public boolean isFooterDisplayed() {
-        logger().info("Checking if 'Google Search' button is displayed");
+        logger().info("Checking if Footer is displayed");
         return isElementDisplayed(selectorFooter);
     }
 
     public GoogleSearchResultsAllPage clickGoogleSearchButton() {
         logger().info("Clicking 'Google Search' button");
-        click(selectorGoogleSearchButton);
+        try {
+            click(selectorGoogleSearchButton);
+        } catch (WebDriverException ex) {
+            logger().info("'Google Search' button not clickable");
+            logger().info("Clicking 'Google Search' button from search box dropdown");
+            click(selectorGoogleSearchDropdownButton);
+        }
         return new GoogleSearchResultsAllPage();
     }
 
@@ -91,7 +100,13 @@ public class GoogleHomePage extends BasePage {
 
     public GoogleDoodlesPage clickImFeelingLuckyButton() {
         logger().info("Clicking 'I'm Feeling Lucky' button");
-        click(selectorImFeelingLuckyButton);
+        try {
+            click(selectorImFeelingLuckyButton);
+        } catch (WebDriverException ex) {
+            logger().info("'I'm Feeling Lucky' button not clickable");
+            logger().info("Clicking 'I'm Feeling Lucky' button from search box dropdown");
+            click(selectorImFeelingLuckyDropdownButton);
+        }
         return new GoogleDoodlesPage();
     }
 
