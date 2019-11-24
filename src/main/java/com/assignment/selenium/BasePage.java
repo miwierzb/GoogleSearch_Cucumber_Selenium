@@ -105,7 +105,6 @@ public abstract class BasePage implements IBasePage {
         WebElement textBox = getDriver().findElement(locatorTextField);
         textBox.clear();
         textBox.sendKeys(text);
-        textBox.clear();
     }
 
 }
