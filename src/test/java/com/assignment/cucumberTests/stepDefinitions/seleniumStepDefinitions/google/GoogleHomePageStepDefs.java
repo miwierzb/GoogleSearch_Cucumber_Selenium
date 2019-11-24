@@ -90,6 +90,13 @@ public class GoogleHomePageStepDefs {
         googleStepData.googleSearchResultTopMenuBar = new GoogleSearchResultTopMenuBar();
     }
 
+    @And("^I click 'Enter' keyboard key$")
+    public void clickEnterKey() {
+        logger().info("STEP: I click 'Enter' keyboard key");
+        googleStepData.googleSearchResultsAllPage = googleStepData.googleHomePage.clickEnterKey();
+        googleStepData.googleSearchResultTopMenuBar = new GoogleSearchResultTopMenuBar();
+    }
+
     @Then("^I should be redirected to Google Search Result Page$")
     public void verifyIfGoogleSearchResultPageIsLoaded() {
         logger().info("STEP: I should be redirected to Google Search Result Page");

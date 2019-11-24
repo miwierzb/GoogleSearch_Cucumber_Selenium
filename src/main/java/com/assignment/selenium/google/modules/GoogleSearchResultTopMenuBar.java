@@ -20,6 +20,7 @@ public class GoogleSearchResultTopMenuBar extends BasePage {
     private final static By selectorBookmarksBar = By.cssSelector("#hdtb-msb");
     private final static By selectorBookmarksTabs = By.xpath("//div[@id='hdtb-msb-vis']//*[text()]");
     private final static By selectorImagesTab = By.xpath("//div[@role='tab']//*[text()='Images']");
+    private final static By getSelectorSearchBoxDropdown = By.cssSelector("[role='listbox']");
 
     @Override
     public boolean isLoaded() {
@@ -52,6 +53,7 @@ public class GoogleSearchResultTopMenuBar extends BasePage {
     public void enterSearchBoxText(String searchText) {
         logger().info("Entering " + searchText + " into Search Box");
         enterTextToTextField(searchText, selectorSearchBoxTextField);
+        waitForElementToAppearNoException(getSelectorSearchBoxDropdown);
     }
 
     public GoogleSearchResultsAllPage clickMagnifierButton() {

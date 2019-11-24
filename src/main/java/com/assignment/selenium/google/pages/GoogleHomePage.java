@@ -2,8 +2,10 @@ package com.assignment.selenium.google.pages;
 
 import com.assignment.selenium.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class GoogleHomePage extends BasePage {
     private final static By selectorImFeelingLuckyButton = By.cssSelector("div:not([jsname]) > center > input[value=\"I'm Feeling Lucky\"]");
     private final static By selectorImFeelingLuckyDropdownButton = By.cssSelector("div[jsname] input[value=\"I'm Feeling Lucky\"]");
     private final static By selectorSignInButton = By.xpath("//a[text()='Sign in']");
+    private final static By getSelectorSearchBoxDropdown = By.cssSelector("[role='listbox']");
     private final static String url = "https://www.google.com/";
 
     @Override
@@ -80,6 +83,13 @@ public class GoogleHomePage extends BasePage {
         return new GoogleSearchResultsAllPage();
     }
 
+    public GoogleSearchResultsAllPage clickEnterKey() {
+        logger().info("Clicking 'Enter' key");
+        Actions actions = new Actions(getDriver());
+        actions.sendKeys(Keys.ENTER).perform();
+        return new GoogleSearchResultsAllPage();
+    }
+
     public GoogleAccountsPage clickSignInButton() {
         logger().info("Clicking 'Sign in' button");
         click(selectorSignInButton);
@@ -101,6 +111,7 @@ public class GoogleHomePage extends BasePage {
     public void enterSearchBoxText(String searchText) {
         logger().info("Entering " + searchText + " into Search Box");
         enterTextToTextField(searchText, selectorSearchBoxTextField);
+        waitForElementToAppearNoException(getSelectorSearchBoxDropdown);
     }
 
     public ArrayList<String> getFooterLinksTexts() {
