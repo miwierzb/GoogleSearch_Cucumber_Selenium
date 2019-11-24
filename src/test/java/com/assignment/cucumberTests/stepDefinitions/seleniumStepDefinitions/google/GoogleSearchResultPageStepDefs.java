@@ -22,7 +22,7 @@ public class GoogleSearchResultPageStepDefs {
     }
 
     @When("^I'm on Google Search Result Page$")
-    public void verifyIfGoogleSearchResultPageIsLoaded() {
+    public void verifyThatGoogleSearchResultPageIsLoaded() {
         logger().info("STEP: I'm on Google Search Result Page");
         softly.assertThat(googleStepData.googleSearchResultTopMenuBar.isLoaded()).as("Google Search Result Page Top " +
                 "Menu Bar is not displayed").isTrue();
@@ -32,7 +32,7 @@ public class GoogleSearchResultPageStepDefs {
     }
 
     @Then("^I should see correct bookmarks$")
-    public void verifyIfCorrectBookmarksAreDisplayed(List<String> bookmarks) {
+    public void verifyThatCorrectBookmarksAreDisplayed(List<String> bookmarks) {
         logger().info("STEP: I should see correct bookmarks");
         logger().info("Bookmarks specified in scenario: " + bookmarks);
         softly.assertThat(googleStepData.googleSearchResultTopMenuBar.isBookmarksBarDisplayed()).as("Google Search " +
@@ -43,7 +43,7 @@ public class GoogleSearchResultPageStepDefs {
     }
 
     @And("^I should see correct search result for \'(.+)\'$")
-    public void verifyIfSearchCorrectResultsAreDisplayed(String searchText) {
+    public void verifyThatSearchCorrectResultsAreDisplayed(String searchText) {
         String[] keywordArray = searchText.split(" ");
         logger().info("STEP: I should see correct search result for: " + searchText);
         softly.assertThat(googleStepData.googleSearchResultsAllPage.isAnySearchResultDisplayed()).as("Google Search " +
@@ -62,7 +62,7 @@ public class GoogleSearchResultPageStepDefs {
     }
 
     @Then("^I should land on Images Search Results Page$")
-    public void verifyIfGoogleImagesSearchResultPageIsLoaded() {
+    public void verifyThatGoogleImagesSearchResultPageIsLoaded() {
         logger().info("STEP: I should land on Images Search Results Page");
         softly.assertThat(googleStepData.googleSearchResultsImagesPage.isLoaded()).as("Google Images Search Result " +
                 "Page is not loaded").isTrue();
@@ -70,7 +70,7 @@ public class GoogleSearchResultPageStepDefs {
     }
 
     @Then("^I should see images search result for \'(.+)\'$")
-    public void verifyIfSearchResultCorrectImagesAreDisplayed(String searchText) {
+    public void verifyThatSearchResultCorrectImagesAreDisplayed(String searchText) {
         String[] keywordArray = searchText.split(" ");
         logger().info("STEP: I should see images search result for: " + searchText);
         softly.assertThat(googleStepData.googleSearchResultsImagesPage.isAnySearchResultImageDisplayed()).as("Google " +
@@ -89,7 +89,7 @@ public class GoogleSearchResultPageStepDefs {
     }
 
     @Then("^I should see message '(.+)'$")
-    public void verifyIfCustomMessageIsDisplayed(String message) {
+    public void verifyThatCustomMessageIsDisplayed(String message) {
         switch (message) {
             case "Your search - <keyword> - did not match any documents":
                 logger().info("STEP: I should see message 'Your search - <keyword> - did not match any documents'");
