@@ -172,13 +172,7 @@ mvn test -Dcucumber.options="--help"
 Report with screenshot (for failed scenario) will be generated in target/Cucumber directory.
 
 ## Authors and acknowledgment
-Created by Michal Wierzbicki 12.2018
-
-Updated by Michal Wierzbicki 03.2019
-
-Updated by Michal Wierzbicki 08.2019
-
-Updated by Michal Wierzbicki 11.2019
+Created by Michal Wierzbicki 11.2019
 
 ## Project status
 Project will be continued in future.
