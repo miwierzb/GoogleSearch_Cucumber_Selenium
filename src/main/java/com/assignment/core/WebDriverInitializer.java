@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import static com.assignment.core.CustomLogger.logger;
@@ -20,13 +22,17 @@ public class WebDriverInitializer {
         logger().debug("Creating new " + WEB_DRIVER + " instance");
         switch (WEB_DRIVER) {
             case "chrome":
-                ChromeOptions chromeOptions =  new ChromeOptions();
+                ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--lang=en-GB");
                 //chromeOptions.setHeadless(true);
                 wb_driver = new ChromeDriver(chromeOptions);
                 break;
             case "gecko":
-                wb_driver = new FirefoxDriver();
+                FirefoxProfile ffProfile = new FirefoxProfile();
+                ffProfile.setPreference("intl.accept_languages", "en-GB");
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setProfile(ffProfile);
+                wb_driver = new FirefoxDriver(firefoxOptions);
                 break;
             case "default":
                 logger().debug("Wrong test data for selenium.webdriver");

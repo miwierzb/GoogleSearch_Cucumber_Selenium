@@ -15,9 +15,9 @@ Feature: GoogleSearchResult
     Then  I should see correct bookmarks
           | All    |
           | Images |
-          | News   |
-          | Videos |
           | Maps   |
+          | Videos |
+          | News   |
 
   Scenario Outline: Correct 'Images' search results are displayed on Image Search Result Page for '<searchText>'
     Given I enter text '<searchText>' into search box

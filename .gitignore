@@ -2,6 +2,7 @@
 .idea/
 logging.log
 screenShots/
+allure-results/
 
 
 # File-based project format

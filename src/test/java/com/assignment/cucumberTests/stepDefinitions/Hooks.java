@@ -43,7 +43,7 @@ public class Hooks {
     public void afterClassSelenium() {
         if (null != getDriver()) {
             logger().debug("AFTER STEP: Closing WebDriver");
-            getDriver().close();
+            //getDriver().close();
             getDriver().quit();
         }
     }
