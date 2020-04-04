@@ -14,14 +14,15 @@ Testing Approach - [Google Home Page and Google Search Results Approach](https:/
  Note - all features were tested on Windows 32/64 bit and Chrome browser
 
 **Selenium Test Automation Framework includes:**
+- Framework for automated web UI testing
+- POM model support
 - 'PropertiesManager' - test data imported from test.data.properties file
 - 'CustomLogger' - Custom Logger to stdout and file including 'WebEventListener' event custom logs based on log4j (configuration file - log4j.properties, logging to logging.log file in main project directory)
 - 'SharedTestData' - container for test data that can be used during test execution
-- 'ScreenShotOnFailure' - for Cucumber tests run from CucumberTestRunners report with screenshot will be generated in target/Cucumber directory
+- Support for multiple reporting solutions (Allure report, Cucumber HTML report, Cucumber-JVM report)
 - Ability to choose browser from test.data.properties file ('WebDriverInitializer' class) (package includes webdrivers for chrome and mozilla firefox)
-- Supporting POM model
 
-Set up with Cucumber, Selenium WebDriver, AssertJ and Maven + Selenium WebDriver, tests written in Java.
+Set up with Cucumber, Selenium WebDriver, AssertJ and Maven, tests written in Java.
 
 ## Installation
 
@@ -169,7 +170,28 @@ If you need help on these Cucumber options, then enter the following command in 
 ```bash
 mvn test -Dcucumber.options="--help"
 ```
-Report with screenshot (for failed scenario) will be generated in target/Cucumber directory.
+
+***6. REPORTING***
+
+There are multiple solution for generating reports, including:
+- cucumber HTML Report will be generated in ./target/Cucumber directory.
+- cucumber-jvm report Report will be generated in ./target/cucumber-jvm-report directory
+- allure report data will be stored in ./allure-results directory
+
+Keep in mind that all of these will be generated when running test from Maven e.g. 
+```bash
+mvn clean install
+mvn test
+mvn verify
+```
+When running tests locally from a runner class, cucumber-jvm-report won't be generated as it is a part of maven build.
+
+To access Allure report you need to install Allure on your machine and generate the report based on .json files in ./allure-results directory. For more information please refer to [Allure documentation](https://docs.qameta.io/allure/).
+After successfull installation run
+```bash
+allure serve /home/path/to/project/target/surefire-reports/
+```
+Which generates a report in temporary folder from the data found in the provided path and then creates a local Jetty server instance, serves generated report and opens it in the default browser.
 
 ## Authors and acknowledgment
 Created by Michal Wierzbicki 11.2019
