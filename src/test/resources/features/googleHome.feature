@@ -17,7 +17,7 @@ Feature: GoogleHomePage
     Then  I should see correct Footer links
             | Advertising      |
             | Business         |
-            | Aboutt            |
+            | About            |
             | How Search works |
 
   Scenario: 'I'm Feeling Lucky' button redirects to Doodles Page
