@@ -3,6 +3,7 @@
 logging.log
 screenShots/
 allure-results/
+allure-reports/
 
 
 # File-based project format

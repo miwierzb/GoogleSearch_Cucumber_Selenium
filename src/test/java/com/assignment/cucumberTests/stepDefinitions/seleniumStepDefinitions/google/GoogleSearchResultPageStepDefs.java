@@ -1,9 +1,9 @@
 package com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.google;
 
 import com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.GoogleStepData;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 
 import java.util.Arrays;
