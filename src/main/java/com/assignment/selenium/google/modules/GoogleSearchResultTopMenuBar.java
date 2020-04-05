@@ -19,7 +19,7 @@ public class GoogleSearchResultTopMenuBar extends BasePage {
     private final static By selectorMagnifierButton = By.cssSelector("button[aria-label='Google Search']");
     private final static By selectorBookmarksBar = By.cssSelector("#hdtb-msb");
     private final static By selectorBookmarksTabs = By.xpath("//div[@id='hdtb-msb-vis']//*[text()]");
-    private final static By selectorImagesTab = By.xpath("//div[@role='tab']//*[text()='Images']");
+    private final static By selectorImagesTab = By.xpath("//div[@role='navigation']//*[text()='Images']");
     private final static By getSelectorSearchBoxDropdown = By.cssSelector("[role='listbox']");
 
     @Override

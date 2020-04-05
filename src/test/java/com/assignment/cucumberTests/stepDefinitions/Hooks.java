@@ -2,13 +2,16 @@ package com.assignment.cucumberTests.stepDefinitions;
 
 import com.assignment.core.SharedTestData;
 import com.assignment.cucumberTests.stepDefinitions.seleniumStepDefinitions.GoogleStepData;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static com.assignment.core.CustomLogger.logger;
 import static com.assignment.core.WebDriverInitializer.getDriver;
@@ -43,7 +46,7 @@ public class Hooks {
     public void afterClassSelenium() {
         if (null != getDriver()) {
             logger().debug("AFTER STEP: Closing WebDriver");
-            getDriver().close();
+            //getDriver().close();
             getDriver().quit();
         }
     }
@@ -52,7 +55,8 @@ public class Hooks {
     public void takeScreenshotOnFailure(Scenario scenario) {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png");
+            //scenario.embed(screenshot, "image/png");
+            scenario.embed(screenshot, "image/png", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy_hh:mm:ss")));
         }
     }
 

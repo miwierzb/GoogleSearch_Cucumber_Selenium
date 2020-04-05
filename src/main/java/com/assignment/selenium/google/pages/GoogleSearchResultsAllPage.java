@@ -12,9 +12,9 @@ import static com.assignment.core.WebDriverInitializer.getDriver;
 
 public class GoogleSearchResultsAllPage extends BasePage {
 
-    private final static By selectorSearchResultForm = By.cssSelector("#center_col");
-    private final static By selectorSearchResults = By.cssSelector("#search .srg .g");
-    private final static By selectorSearchResultsFirstElementTitle = By.cssSelector("#search h3 span");
+    private final static By selectorSearchResultForm = By.cssSelector("#rcnt #center_col");
+    private final static By selectorSearchResults = By.cssSelector("#search .g");
+    private final static By selectorSearchResultsFirstElementTitle = By.cssSelector("#search .r h3");
     private final static By selectorDidNotMatchAnyResultsText = By.cssSelector("#topstuff div:last-child p:first-child");
 
     @Override
